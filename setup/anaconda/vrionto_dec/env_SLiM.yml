@@ -1,0 +1,11 @@
+name: env_SLiM
+channels:
+  - pypi
+  - bioconda
+  - conda-forge
+  - defaults
+  - r
+dependencies:
+  - slim
+prefix: /home/vrionto/anaconda3/envs/env_SLiM
+

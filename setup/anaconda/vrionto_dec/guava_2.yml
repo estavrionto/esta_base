@@ -1,0 +1,19 @@
+name: guava_2
+channels:
+  - pypi
+  - bioconda
+  - conda-forge
+  - defaults
+  - r
+dependencies:
+  - bowtie==1.1.2
+  - bowtie2==2.3.2
+  - cutadapt==1.13
+  - fastqc==0.11.5
+  - samtools==1.3.1
+  - bedtools==2.26.0
+  - picard
+  - igv
+  - ucsc-bedgraphtobigwig
+prefix: /home/vrionto/anaconda3/envs/guava_2
+

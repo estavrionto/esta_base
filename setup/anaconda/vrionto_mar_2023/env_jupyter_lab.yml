@@ -1,0 +1,11 @@
+name: env_jupyter_lab
+channels:
+  - pypi
+  - bioconda
+  - conda-forge
+  - defaults
+  - r
+dependencies:
+  - jupyterlab
+prefix: /home/vrionto/mySSD/mamba/envs/env_jupyter_lab
+

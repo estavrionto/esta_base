@@ -1,0 +1,12 @@
+name: env_deseq2
+channels:
+  - pypi
+  - bioconda
+  - conda-forge
+  - defaults
+  - r
+dependencies:
+  - bioconductor-deseq2
+  - bioconductor-pasilla
+prefix: /home/vrionto/anaconda3/envs/env_deseq2
+

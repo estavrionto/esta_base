@@ -1,0 +1,11 @@
+name: env_htseq
+channels:
+  - pypi
+  - bioconda
+  - conda-forge
+  - defaults
+  - r
+dependencies:
+  - htseq
+prefix: /home/vrionto/anaconda3/envs/env_htseq
+

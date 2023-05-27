@@ -1,0 +1,17 @@
+name: ASE-allelome.pro
+channels:
+  - pypi
+  - bioconda
+  - conda-forge
+  - defaults
+  - r
+dependencies:
+  - bedtools
+  - samtools
+  - r-plyr
+  - r-bitops
+  - r-gtools
+  - r-catools
+  - r-kernsmooth
+prefix: /home/vrionto/anaconda3/envs/ASE-allelome.pro
+

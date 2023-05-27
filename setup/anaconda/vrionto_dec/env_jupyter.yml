@@ -1,0 +1,30 @@
+name: env_jupyter
+channels:
+  - pypi
+  - bioconda
+  - conda-forge
+  - defaults
+  - r
+dependencies:
+  - r-irkernel
+  - nb_conda_kernels
+  - ipykernel
+  - jupyter
+  - numpy
+  - scipy
+  - pandas
+  - matplotlib
+  - r-shiny
+  - r-pheatmap
+  - bioconductor-pasilla
+  - bioconductor-deseq2
+  - networkx
+  - r-bootstrap
+  - requests
+  - r-openxlsx
+  - tqdm
+  - openpyxl
+  - xlsxwriter
+  - scikit-learn
+prefix: /home/vrionto/anaconda3/envs/env_jupyter
+

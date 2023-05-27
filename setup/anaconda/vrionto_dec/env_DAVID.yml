@@ -1,0 +1,12 @@
+name: env_DAVID
+channels:
+  - pypi
+  - bioconda
+  - conda-forge
+  - defaults
+  - r
+dependencies:
+  - bioconductor-rdavidwebservice
+  - r-irkernel
+prefix: /home/vrionto/anaconda3/envs/env_DAVID
+

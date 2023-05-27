@@ -1,0 +1,11 @@
+name: env_pheatmap
+channels:
+  - pypi
+  - bioconda
+  - conda-forge
+  - defaults
+  - r
+dependencies:
+  - r-pheatmap
+prefix: /home/vrionto/anaconda3/envs/env_pheatmap
+

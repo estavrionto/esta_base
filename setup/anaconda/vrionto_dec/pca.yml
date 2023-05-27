@@ -1,0 +1,13 @@
+name: pca
+channels:
+  - pypi
+  - bioconda
+  - conda-forge
+  - defaults
+  - r
+dependencies:
+  - scikit-learn
+  - pandas
+  - matplotlib
+prefix: /home/vrionto/anaconda3/envs/pca
+

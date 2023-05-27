@@ -1,0 +1,37 @@
+name: arvind
+channels:
+  - pypi
+  - bioconda
+  - conda-forge
+  - defaults
+  - r
+dependencies:
+  - jupyter
+  - beautifulsoup4
+  - requests
+  - pandas
+  - lxml
+  - matplotlib
+  - sra-tools
+  - fastqc
+  - trimmomatic
+  - velvet
+  - ucsc-bedgraphtobigwig
+  - bedtools
+  - scikit-learn
+  - keras
+  - tensorflow
+  - ipympl
+  - nodejs
+  - umap-learn
+  - numpy==1.21.5
+  - igv
+  - eggnog-mapper
+  - ucsc-bigwigtowig
+  - r-openxlsx
+  - r-rjava
+  - bioconductor-deseq2
+  - bioconductor-apeglm
+  - youtube-dl
+prefix: /home/vrionto/anaconda3/envs/arvind
+

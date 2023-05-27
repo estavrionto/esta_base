@@ -1,0 +1,377 @@
+
+set $mod mod4
+set $alt mod1
+set $ctrl control
+set $shift Shift
+
+font pango:System San Francisco Display 10
+
+floating_modifier $mod
+
+bindsym $mod+Shift+Return exec i3-sensible-terminal
+
+bindsym $mod+q kill
+
+workspace_layout tabbed 
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+bindsym $mod+w layout toggle tabbed splith stacking
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+#bindsym $mod+space focus mode_toggle
+
+#variables
+set $workspace1f  "D1"
+set $workspace1g  "D2" 
+set $workspace1e  "11: Thunar "
+set $workspace2e  "12: code "
+set $workspace3e  "13: chrome "
+set $workspace4e  "14: python"
+set $workspace5e  "15: steam"
+set $workspace6e  "16: gra1"
+set $workspace7e  "17: gra2"
+set $workspace8e  "18: gra3"
+set $workspace9e  "19: social"
+set $workspace10e "20: game"
+
+set $workspace1  "1: chrome "
+set $workspace2  "2: second "
+set $workspace3  "3: firefox"
+set $workspace4  "4: sublime "
+set $workspace5  "5: VM Manager"
+set $workspace6  "6: "
+set $workspace7  "7 "
+set $workspace8  "8: game"
+set $workspace9  "9"
+set $workspace10 "10: task "
+
+#monitors
+set $monitor_one eDP-1
+set $monitor_two HDMI-1
+set $monitor_thr DVI-I-1-1
+set $monitor_fou DVI-I-2-2
+
+#
+# workspace $workspace1f  output $monitor_thr
+# workspace $workspace1g  output $monitor_fou
+workspace $workspace1f  output $monitor_fou
+workspace $workspace1g  output $monitor_thr
+
+workspace $workspace1e  output $monitor_two
+workspace $workspace2e  output $monitor_two
+workspace $workspace3e  output $monitor_two
+workspace $workspace4e  output $monitor_two
+workspace $workspace5e  output $monitor_two
+workspace $workspace6e  output $monitor_two
+workspace $workspace7e  output $monitor_two
+workspace $workspace8e  output $monitor_two
+workspace $workspace9e  output $monitor_two
+workspace $workspace10e output $monitor_two
+
+workspace $workspace1  output $monitor_one
+workspace $workspace2  output $monitor_one
+workspace $workspace3  output $monitor_one
+workspace $workspace4  output $monitor_one
+workspace $workspace5  output $monitor_one
+workspace $workspace6  output $monitor_one
+workspace $workspace7  output $monitor_one
+workspace $workspace8  output $monitor_one
+workspace $workspace9  output $monitor_one
+workspace $workspace10 output $monitor_one
+
+
+
+# switch to workspace
+
+ bindsym $alt+minus workspace $workspace1f
+ bindsym $alt+equal workspace $workspace1g
+
+ bindsym $alt+1 workspace $workspace1e
+ bindsym $alt+2 workspace $workspace2e
+ bindsym $alt+3 workspace $workspace3e
+ bindsym $alt+4 workspace $workspace4e
+ bindsym $alt+5 workspace $workspace5e
+ bindsym $alt+6 workspace $workspace6e
+ bindsym $alt+7 workspace $workspace7e
+ bindsym $alt+8 workspace $workspace8e
+ bindsym $alt+9 workspace $workspace9e
+ bindsym $alt+0 workspace $workspace10e
+
+ bindsym $mod+1 workspace $workspace1
+ bindsym $mod+2 workspace $workspace2
+ bindsym $mod+3 workspace $workspace3
+ bindsym $mod+4 workspace $workspace4
+ bindsym $mod+5 workspace $workspace5
+ bindsym $mod+6 workspace $workspace6
+ bindsym $mod+7 workspace $workspace7
+ bindsym $mod+8 workspace $workspace8
+ bindsym $mod+9 workspace $workspace9
+ bindsym $mod+0 workspace $workspace10
+
+# move focused container to workspace
+ bindsym $alt+Shift+minus move container to workspace $workspace1f
+ bindsym $alt+Shift+equal move container to workspace $workspace1g
+
+
+ bindsym $alt+Shift+1 move container to workspace $workspace1e
+ bindsym $alt+Shift+2 move container to workspace $workspace2e
+ bindsym $alt+Shift+3 move container to workspace $workspace3e
+ bindsym $alt+Shift+4 move container to workspace $workspace4e
+ bindsym $alt+Shift+5 move container to workspace $workspace5e
+ bindsym $alt+Shift+6 move container to workspace $workspace6e
+ bindsym $alt+Shift+7 move container to workspace $workspace7e
+ bindsym $alt+Shift+8 move container to workspace $workspace8e
+ bindsym $alt+Shift+9 move container to workspace $workspace9e
+ bindsym $alt+Shift+0 move container to workspace $workspace10e
+
+ bindsym $mod+Shift+1 move container to workspace $workspace1
+ bindsym $mod+Shift+2 move container to workspace $workspace2
+ bindsym $mod+Shift+3 move container to workspace $workspace3
+ bindsym $mod+Shift+4 move container to workspace $workspace4
+ bindsym $mod+Shift+5 move container to workspace $workspace5
+ bindsym $mod+Shift+6 move container to workspace $workspace6
+ bindsym $mod+Shift+7 move container to workspace $workspace7
+ bindsym $mod+Shift+8 move container to workspace $workspace8
+ bindsym $mod+Shift+9 move container to workspace $workspace9
+ bindsym $mod+Shift+0 move container to workspace $workspace10
+
+# bindings for colemak-esta-edit
+ set $ws_4 Home
+ set $ws_3 Prior
+ set $ws_2 Next
+ set $ws_1 End 
+# switch to workspace
+ bindsym $alt+$ws_1 workspace $workspace1e
+ bindsym $alt+$ws_2 workspace $workspace2e
+ bindsym $alt+$ws_3 workspace $workspace3e
+ bindsym $alt+$ws_4 workspace $workspace4e
+# app "feh -x -Z myHDD/Works/costom-layout-keyboard/esta_vrionto_colemak_now.png"
+# set $feh_app_class "feh"
+# exec $feh_app
+# for_window [class=$feh_app_class] move scratchpad
+# bindcode 164
+# move focused container to workspace
+ bindsym $alt+Shift+$ws_1 move container to workspace $workspace1e
+ bindsym $alt+Shift+$ws_2 move container to workspace $workspace2e
+ bindsym $alt+Shift+$ws_3 move container to workspace $workspace3e
+ bindsym $alt+Shift+$ws_4 move container to workspace $workspace4e
+
+ bindsym $mod+Shift+$ws_1 move container to workspace $workspace1
+ bindsym $mod+Shift+$ws_2 move container to workspace $workspace2
+ bindsym $mod+Shift+$ws_3 move container to workspace $workspace3
+ bindsym $mod+Shift+$ws_4 move container to workspace $workspace4
+
+bindsym $mod+Shift+r restart
+
+#colors
+set $bg-color 	         #000000
+set $bg-border           #000000
+set $inactive-bg-color   #090909
+set $font System San Francisco Display
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #6a6a6a
+
+# window colors
+#                       border              background         text                 indicator
+client.focused          $bg-color           $bg-color          $text-color          #00ff00
+client.unfocused        $bg-color           $inactive-bg-color $inactive-text-color #00ff00
+client.focused_inactive $bg-color           $inactive-bg-color $inactive-text-color #00ff00
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+
+
+bindsym $mod+d exec dmenu_run -sf grey99 -sb grey1 -nf grey60 -nb grey4 -fn 'System San Francisco Display'
+bindsym $alt+c exec scrcpy
+
+bar {
+        tray_output $monitor_one
+        status_command "i3blocks -c ~/.i3/i3blocks.conf"
+        colors {
+		background $bg-color
+	    	separator #757575
+		#                  border             background         text
+		focused_workspace  $bg-color          $bg-color          $text-color
+		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+	}
+}
+
+
+
+# my own functions
+# use "xprop|grep CLASS" for getting class
+assign [class="Google-chrome"] $workspace1
+# assign [class="Chromium-browser"] $workspace3
+assign [class="firefox"] $workspace3
+
+assign [class="Sublime_text"] $workspace4
+assign [class="Code"] $workspace2e
+assign [class="Thunar"] $workspace1e
+assign [class="Gnome-system-monitor"] $workspace10
+assign [class="Lxtask"] $workspace10
+assign [class="Tor Browser"] $workspace10e
+assign [class="zoom"] $workspace9e
+assign [class="TeamViewer"] $workspace9e
+assign [class="Microsoft Teams - Preview"] $workspace9e
+assign [class="hl2_linux"] $workspace8
+assign [class="dota2"] $workspace10e
+assign [class="Terraria.bin.x86_64"] $workspace10e
+
+assign [class="Minecraft 1.16.2"] $workspace8
+assign [class="minecraft-launcher"] $workspace8
+assign [class="MultiMC5"] $workspace8
+assign [class="Steam"] $workspace5e
+assign [class="VirtualBox Manager"] $workspace5
+assign [class="VirtualBox Machine"] $workspace5e
+assign [class="Tk"] $workspace2
+
+
+for_window [class="VirtualBox"] floating disable
+for_window [class="VirtualBox Machine"] border pixel 1
+for_window [class="dota2"] floating disable
+for_window [class="Tk"] floating enable
+
+
+
+
+
+####################### execute #########################################
+exec compton -f
+exec nm-applet
+exec xfce4-power-manager
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+
+exec nitrogen --restore
+exec megasync
+
+exec google-chrome
+exec lxtask
+exec gnome-system-monitor
+exec thunar
+exec code
+############################ bindsym ##############################
+############################
+############################ for edit layer & other layouts
+bindsym $mod+minus exec KeyboardLayout.py edit
+############################
+############################ screenshot ####################################
+set $mode_screenshot  fullscreen, window, selective
+set $screenshot_full      "scrot '%Y-%m-%d_%H:%M:%S.png' -e 'mv $f ~/myHDD/Pictures/Screenshots/'"
+set $screenshot_window    "scrot -u '%Y-%m-%d_%H:%M:%S_window.png' -e 'mv $f ~/myHDD/Pictures/Screenshots/'"
+set $screenshot_selective "gnome-screenshot -a -i"
+# set $screenshot_selective "scrot -s -e 'xclip -selection clipboard -t image/png -i $f'"
+mode "$mode_screenshot" {
+    bindsym f exec --no-startup-id $screenshot_full      ,mode "default"
+    bindsym w exec --no-startup-id $screenshot_window    ,mode "default"
+    bindsym s exec --no-startup-id $screenshot_selective ,mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+p mode "$mode_screenshot"
+
+#bindsym $mod+Shift+p exec "scrot '%Y-%m-%d_%H:%M:%S.png' -e 'mv $f ~/myHDD/Pictures/Screenshots/'"
+bindsym $mod+Shift+p exec "scrot -u -e 'xclip -selection clipboard -t image/png -i $f'"
+bindsym $alt+p exec "scrot -s -e 'xclip -selection clipboard -t image/png -i $f'"
+##############################################################################
+######################################## executing always #################################
+
+# reload the .uindkeys
+exec_always ps aux|grep 'xbindkeys'|grep -v 'grep'|awk '{print $2}'|xargs kill
+exec_always xbindkeys
+
+######################################## ScratchPad commands ##################################
+bindsym $alt+space scratchpad show
+
+# to do lists:
+#    "flatpak run com.github.alainm23.planner" "Com.github.alainm23.planner"
+#    "todoist" "Todoist"
+# notes: "tusk" "Tusk"
+
+set $social_app "chromium-browser --force-device-scale-factor=1.2"
+exec $social_app
+
+set $social_app_class "Chromium-browser"
+for_window [class=$social_app_class] move scratchpad
+bindsym $alt+Return exec i3-esta-scratchpad.py $social_app_class
+bindsym $alt+x exec i3-esta-scratchpad.py $social_app_class
+
+set $gnome-system-monitor_app "gnome-system-monitor"
+set $Gnome-system-monitor_app_class "Gnome-system-monitor"
+exec $gnome-system-monitor_app
+for_window [class=$Gnome-system-monitor_app_class] move scratchpad
+bindsym $mod+m [class=$Gnome-system-monitor_app_class] scratchpad show, resize set 1000px 700px, move position center
+
+set $pavucontrol_app "pavucontrol"
+set $Pavucontrol_app_class "Pavucontrol"
+exec $pavucontrol_app
+for_window [class=$Pavucontrol_app_class] move scratchpad
+bindsym $alt+s [class=$Pavucontrol_app_class] scratchpad show, resize set 1000px 700px, move position center
+
+# set $tilix_app "tilix"
+# set $Tilix_app_class "Tilix"
+# exec $tilix_app
+# for_window [class=$Tilix_app_class] move scratchpad
+#bindsym $alt+p [class=$Tilix_app_class] scratchpad show, resize set 1366px 700px, move position center
+
+
+# set $feh_app "feh -x -Z myHDD/Works/costom-layout-keyboard/esta_vrionto_colemak_now.png"
+# set $feh_app_class "feh"
+# exec $feh_app
+# for_window [class=$feh_app_class] move scratchpad
+# bindcode 164 [class=$feh_app_class] scratchpad show, resize set 1000px 350px, move position center
+
+set $terminator_app "terminator"
+exec $terminator_app
+
+set $Terminator_app_class "Terminator"
+for_window [class=$Terminator_app_class] move scratchpad
+bindsym $mod+Return exec i3-esta-scratchpad.py $Terminator_app_class
+bindsym $mod+x exec i3-esta-scratchpad.py $Terminator_app_class
+
+############################ power off ####################################
+
+set $Locker KeyboardLayout.py c-e && sleep 1 && i3lock -t -i ~/myHDD/Works/Arvind_art_face/lock12.png && sleep 1
+
+set $mode_system  (l)ock, (e)xit , (s)uspend, (h)ibernate, (r)eboot, (p)oweroff
+
+mode "$mode_system" {
+    #exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym p exec --no-startup-id systemctl poweroff -i, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $alt+q exec --no-startup-id $Locker && systemctl suspend, mode "default"
+bindsym $mod+Shift+e mode "$mode_system"
+##############################################################################
+
+#keyboard layout change
+bindsym $mod+space exec KeyboardLayout.py change
+
+#google search
+bindsym $alt+Shift+s exec test.py

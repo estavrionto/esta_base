@@ -1,0 +1,11 @@
+name: spades_env
+channels:
+  - pypi
+  - bioconda
+  - conda-forge
+  - defaults
+  - r
+dependencies:
+  - spades
+prefix: /home/vrionto/anaconda3/envs/spades_env
+

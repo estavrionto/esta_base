@@ -1,0 +1,16 @@
+name: cssq_2
+channels:
+  - pypi
+  - bioconda
+  - conda-forge
+  - defaults
+  - r
+dependencies:
+  - notebook
+  - nb_conda_kernels
+  - r
+  - bioconductor-cssq
+  - r-irkernel
+  - pandas
+prefix: /home/vrionto/anaconda3/envs/cssq_2
+

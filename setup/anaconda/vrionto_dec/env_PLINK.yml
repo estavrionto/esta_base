@@ -1,0 +1,9 @@
+name: env_PLINK
+channels:
+  - pypi
+  - bioconda
+  - conda-forge
+  - defaults
+  - r
+prefix: /home/vrionto/anaconda3/envs/env_PLINK
+

@@ -1,0 +1,15 @@
+name: cssq_1
+channels:
+  - pypi
+  - bioconda
+  - conda-forge
+  - defaults
+  - r
+dependencies:
+  - r
+  - bioconductor-cssq
+  - r-irkernel
+  - notebook
+  - nb_conda_kernels
+prefix: /home/vrionto/anaconda3/envs/cssq_1
+

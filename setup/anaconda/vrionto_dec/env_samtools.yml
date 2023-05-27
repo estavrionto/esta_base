@@ -1,0 +1,11 @@
+name: env_samtools
+channels:
+  - pypi
+  - bioconda
+  - conda-forge
+  - defaults
+  - r
+dependencies:
+  - samtools
+prefix: /home/vrionto/anaconda3/envs/env_samtools
+

@@ -1,0 +1,17 @@
+name: base
+channels:
+  - pypi
+  - bioconda
+  - conda-forge
+  - defaults
+  - r
+dependencies:
+  - python=3.10
+  - mamba
+  - conda==22.9.0
+  - pip
+  - ca-certificates
+  - certifi
+  - openssl
+prefix: /home/vrionto/mySSD/mamba
+
