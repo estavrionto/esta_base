@@ -9,7 +9,7 @@ import json
 i3_msg = 'i3-msg '
 
 def scratchpad_show(w_class,width,height):
-    sh("i3-msg '[class="+w_class+"] scratchpad show, resize set "+width+"px "+height+"px, move position center'")
+    print("i3-msg '[class="+w_class+"] scratchpad show, resize set "+width+"px "+height+"px, move position center'")
 
 def get_resolution():
     i3_msg_t = 'i3-msg -t '

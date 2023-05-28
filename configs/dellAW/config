@@ -1,0 +1,324 @@
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod mod4
+set $alt mod1
+set $ctrl control
+set $shift Shift
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:System San Francisco Display 10
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+#font pango:DejaVu Sans Mono 8
+
+# Start XDG autostart .desktop files using dex. See also
+# https://wiki.archlinux.org/index.php/XDG_Autostart
+exec --no-startup-id dex --autostart --environment i3
+
+# The combination of xss-lock, nm-applet and pactl is a popular choice, so
+# they are included here as an example. Modify as you see fit.
+
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# NetworkManager is the most popular way to manage wireless networks on Linux,
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id nm-applet
+
+
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# move tiling windows via drag & drop by left-clicking into the title bar,
+# or left-clicking anywhere into the window while holding the floating modifier.
+tiling_drag modifier titlebar
+
+# start a terminal
+# bindsym $mod+Return exec i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+q kill
+workspace_layout tabbed 
+
+# start dmenu (a program launcher)
+# bindsym $mod+d exec --no-startup-id dmenu_run
+# A more modern dmenu replacement is rofi:
+# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
+# There also is i3-dmenu-desktop which only displays applications shipping a
+# .desktop file. It is a wrapper around dmenu, so you need that installed.
+# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+bindsym $mod+w layout toggle tabbed splith stacking
+
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+#variables
+set $workspace1e  "11: Thunar "
+set $workspace2e  "12: code "
+set $workspace3e  "13: chrome "
+set $workspace4e  "14: python"
+set $workspace5e  "15: steam"
+set $workspace6e  "16: gra1"
+set $workspace7e  "17: gra2"
+set $workspace8e  "18: gra3"
+set $workspace9e  "19: social"
+set $workspace10e "20: game"
+
+set $workspace1  "1: chrome "
+set $workspace2  "2: second "
+set $workspace3  "3: firefox"
+set $workspace4  "4: sublime "
+set $workspace5  "5: VM Manager"
+set $workspace6  "6: "
+set $workspace7  "7 "
+set $workspace8  "8: game"
+set $workspace9  "9"
+set $workspace10 "10: task "
+
+#monitors
+set $monitor_one DP-0r
+set $monitor_two HDMI-0
+
+
+workspace $workspace1e  output $monitor_two
+workspace $workspace2e  output $monitor_two
+workspace $workspace3e  output $monitor_two
+workspace $workspace4e  output $monitor_two
+workspace $workspace5e  output $monitor_two
+workspace $workspace6e  output $monitor_two
+workspace $workspace7e  output $monitor_two
+workspace $workspace8e  output $monitor_two
+workspace $workspace9e  output $monitor_two
+workspace $workspace10e output $monitor_two
+
+workspace $workspace1  output $monitor_one
+workspace $workspace2  output $monitor_one
+workspace $workspace3  output $monitor_one
+workspace $workspace4  output $monitor_one
+workspace $workspace5  output $monitor_one
+workspace $workspace6  output $monitor_one
+workspace $workspace7  output $monitor_one
+workspace $workspace8  output $monitor_one
+workspace $workspace9  output $monitor_one
+workspace $workspace10 output $monitor_one
+
+
+
+# switch to workspace
+
+
+
+ bindsym $alt+1 workspace $workspace1e
+ bindsym $alt+2 workspace $workspace2e
+ bindsym $alt+3 workspace $workspace3e
+ bindsym $alt+4 workspace $workspace4e
+ bindsym $alt+5 workspace $workspace5e
+ bindsym $alt+6 workspace $workspace6e
+ bindsym $alt+7 workspace $workspace7e
+ bindsym $alt+8 workspace $workspace8e
+ bindsym $alt+9 workspace $workspace9e
+ bindsym $alt+0 workspace $workspace10e
+
+ bindsym $mod+1 workspace $workspace1
+ bindsym $mod+2 workspace $workspace2
+ bindsym $mod+3 workspace $workspace3
+ bindsym $mod+4 workspace $workspace4
+ bindsym $mod+5 workspace $workspace5
+ bindsym $mod+6 workspace $workspace6
+ bindsym $mod+7 workspace $workspace7
+ bindsym $mod+8 workspace $workspace8
+ bindsym $mod+9 workspace $workspace9
+ bindsym $mod+0 workspace $workspace10
+
+# move focused container to workspace
+
+ bindsym $alt+Shift+1 move container to workspace $workspace1e
+ bindsym $alt+Shift+2 move container to workspace $workspace2e
+ bindsym $alt+Shift+3 move container to workspace $workspace3e
+ bindsym $alt+Shift+4 move container to workspace $workspace4e
+ bindsym $alt+Shift+5 move container to workspace $workspace5e
+ bindsym $alt+Shift+6 move container to workspace $workspace6e
+ bindsym $alt+Shift+7 move container to workspace $workspace7e
+ bindsym $alt+Shift+8 move container to workspace $workspace8e
+ bindsym $alt+Shift+9 move container to workspace $workspace9e
+ bindsym $alt+Shift+0 move container to workspace $workspace10e
+
+ bindsym $mod+Shift+1 move container to workspace $workspace1
+ bindsym $mod+Shift+2 move container to workspace $workspace2
+ bindsym $mod+Shift+3 move container to workspace $workspace3
+ bindsym $mod+Shift+4 move container to workspace $workspace4
+ bindsym $mod+Shift+5 move container to workspace $workspace5
+ bindsym $mod+Shift+6 move container to workspace $workspace6
+ bindsym $mod+Shift+7 move container to workspace $workspace7
+ bindsym $mod+Shift+8 move container to workspace $workspace8
+ bindsym $mod+Shift+9 move container to workspace $workspace9
+ bindsym $mod+Shift+0 move container to workspace $workspace10
+
+
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+#colors
+set $bg-color 	         #000000
+set $bg-border           #000000
+set $inactive-bg-color   #090909
+set $font System San Francisco Display
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #6a6a6a
+
+# window colors
+#                       border              background         text                 indicator
+client.focused          $bg-color           $bg-color          $text-color          #00ff00
+client.unfocused        $bg-color           $inactive-bg-color $inactive-text-color #00ff00
+client.focused_inactive $bg-color           $inactive-bg-color $inactive-text-color #00ff00
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+
+bindsym $mod+d exec dmenu_run -sf grey99 -sb grey1 -nf grey60 -nb grey4 -fn 'System San Francisco Display'
+bindsym $alt+c exec scrcpy
+
+bar {
+        tray_output $monitor_one
+        status_command i3status
+        # status_command "i3blocks -c ~/.i3/i3blocks.conf"
+        colors {
+		background $bg-color
+	    	separator #757575
+		#                  border             background         text
+		focused_workspace  $bg-color          $bg-color          $text-color
+		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+	}
+}
+
+
+exec "xrandr --output eDP-2 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-1 --off --output DP-1-2 --off --output HDMI-1-2 --off --output HDMI-1-3 --off --output DP-1-3 --off"
+
+# my own functions
+# use "xprop|grep CLASS" for getting class
+assign [class="Google-chrome"] $workspace3e
+# assign [class="Chromium-browser"] $workspace3
+assign [class="firefox"] $workspace3
+
+assign [class="Code"] $workspace2e
+assign [class="Thunar"] $workspace1e
+assign [class="Lxtask"] $workspace10
+assign [class="dota2"] $workspace10e
+
+assign [class="Steam"] $workspace5e
+
+
+for_window [class="dota2"] floating disable
+
+
+
+######################################## ScratchPad commands ##################################
+bindsym $alt+space scratchpad show
+
+# to do lists:
+#    "flatpak run com.github.alainm23.planner" "Com.github.alainm23.planner"
+#    "todoist" "Todoist"
+# notes: "tusk" "Tusk"
+
+set $i3_scratchpad "/home/ab/esta_base/configs/i3-esta-scratchpad.py"
+
+set $tilix_app "tilix"
+set $Tilix_app_class "Tilix"
+exec $tilix_app
+for_window [class=$Tilix_app_class] move scratchpad
+bindsym $alt+p [class=$Tilix_app_class] scratchpad show, resize set 1880px 1010px, move position center
+
+
+set $terminator_app "terminator"
+exec $terminator_app
+
+set $Terminator_app_class "Terminator"
+for_window [class=$Terminator_app_class] move scratchpad
+bindsym $mod+Return [class=$Terminator_app_class] scratchpad show, resize set 1880px 1010px, move position center
+bindsym $mod+x [class=$Terminator_app_class] scratchpad show, resize set 1880px 1010px, move position center
+
+
+set $social_app "chromium --force-device-scale-factor=1.2"
+exec $social_app
+
+set $social_app_class "Chromium"
+for_window [class=$social_app_class] move scratchpad
+bindsym $alt+Return [class=$social_app_class] scratchpad show, resize set 1880px 1010px, move position center
+bindsym $alt+x [class=$social_app_class] scratchpad show, resize set 1880px 1010px, move position center
+for_window [class=$social_app_class] border pixel 3
+
+set $pavucontrol_app "pavucontrol"
+set $Pavucontrol_app_class "Pavucontrol"
+exec $pavucontrol_app
+for_window [class=$Pavucontrol_app_class] move scratchpad
+bindsym $alt+s [class=$Pavucontrol_app_class] scratchpad show, resize set 1000px 700px, move position center
+
+####################### execute #########################################
+exec compton -f
+# exec xfce4-power-manager
+# exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+
+# exec nitrogen --restore
+# exec megasync
+
+exec google-chrome
+# exec lxtask
+# exec gnome-system-monitor
+exec thunar
+exec code
+
+
+
+
+# install instructions
+# https://askubuntu.com/questions/726972/dual-boot-windows-10-and-linux-ubuntu-on-separate-hard-drives
+# 1GB EFI
+# 30GB ext4 /
+# 20GB swap
+# 445GB ext4 /home
+# install debian
+# sudo apt install gh
+# https://github.com/estavrionto/esta_base.git
+# , i3, nala, chromium, xserver, thunar, lxtask, lxappaearance, arandr, picom/compton, gh, i3blocks
+# gh repo clone ChrisTitusTech/Debian-titus
+
+
+# https://code.visualstudio.com/docs/setup/linux
+# wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+
+# Debian Bookworm
+# deb http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
+# apt update
+# apt install nvidia-driver firmware-misc-nonfree
+# xrandr --output HDMI-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-0 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off --output DP-2 --off --output DP-1-1 --off --output HDMI-1-1 --off --output HDMI-1-2 --off --output DP-1-2 --off
+
