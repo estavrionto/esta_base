@@ -11,23 +11,47 @@ font pango:System San Francisco Display 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+# font pango:DejaVu Sans Mono 8
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
+############################ power off ####################################
+
+set $Locker i3lock --nofork -c 000000 && sleep 1
+
+set $mode_system System (l)ock, (e)xit , (s)uspend, (h)ibernate, (r)eboot, (p)oweroff
+
+mode "$mode_system" {
+    #exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym p exec --no-startup-id systemctl poweroff -i, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $alt+q exec --no-startup-id $Locker
+bindsym $mod+Shift+e mode "$mode_system"
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -c 000000
+# bindsym $alt+q exec --no-startup-id i3lock --nofork -c 000000
+
+# bindsym $alt+q exec --no-startup-id loginctl lock-session
+##############################################################################
+
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
-
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -37,40 +61,25 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
-# start a terminal
-# bindsym $mod+Return exec i3-sensible-terminal
-
 # kill focused window
 bindsym $mod+q kill
 workspace_layout tabbed 
 
-# start dmenu (a program launcher)
-# bindsym $mod+d exec --no-startup-id dmenu_run
-# A more modern dmenu replacement is rofi:
-# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
-# There also is i3-dmenu-desktop which only displays applications shipping a
-# .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
-
-# alternatively, you can use the cursor keys:
+# change focus
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-
-# alternatively, you can use the cursor keys:
+# move windows
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-
-
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
-
+# change layout
 bindsym $mod+w layout toggle tabbed splith stacking
-
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -101,11 +110,11 @@ set $workspace8  "8: game"
 set $workspace9  "9"
 set $workspace10 "10: task "
 
-#monitors
-set $monitor_one DP-0r
+# monitors
+set $monitor_one DP-0
 set $monitor_two HDMI-0
 
-
+# define ws-monitor relation
 workspace $workspace1e  output $monitor_two
 workspace $workspace2e  output $monitor_two
 workspace $workspace3e  output $monitor_two
@@ -128,12 +137,7 @@ workspace $workspace8  output $monitor_one
 workspace $workspace9  output $monitor_one
 workspace $workspace10 output $monitor_one
 
-
-
 # switch to workspace
-
-
-
  bindsym $alt+1 workspace $workspace1e
  bindsym $alt+2 workspace $workspace2e
  bindsym $alt+3 workspace $workspace3e
@@ -184,8 +188,6 @@ workspace $workspace10 output $monitor_one
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 #colors
 set $bg-color 	         #000000
@@ -207,9 +209,9 @@ bindsym $mod+d exec dmenu_run -sf grey99 -sb grey1 -nf grey60 -nb grey4 -fn 'Sys
 bindsym $alt+c exec scrcpy
 
 bar {
-        tray_output $monitor_one
-        status_command i3status
-        # status_command "i3blocks -c ~/.i3/i3blocks.conf"
+        tray_output $monitor_two
+        # status_command i3status
+        status_command "i3blocks -c ~/esta_base/configs/dellAW/i3blocks.conf"
         colors {
 		background $bg-color
 	    	separator #757575
@@ -235,6 +237,7 @@ assign [class="Lxtask"] $workspace10
 assign [class="dota2"] $workspace10e
 
 assign [class="Steam"] $workspace5e
+assign [class="spring"] $workspace10e
 
 
 for_window [class="dota2"] floating disable
@@ -287,7 +290,7 @@ exec compton -f
 # exec xfce4-power-manager
 # exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 
-# exec nitrogen --restore
+exec nitrogen --restore
 # exec megasync
 
 exec google-chrome
@@ -295,30 +298,12 @@ exec google-chrome
 # exec gnome-system-monitor
 exec thunar
 exec code
+exec lxtask
 
 
 
 
-# install instructions
-# https://askubuntu.com/questions/726972/dual-boot-windows-10-and-linux-ubuntu-on-separate-hard-drives
-# 1GB EFI
-# 30GB ext4 /
-# 20GB swap
-# 445GB ext4 /home
-# install debian
-# sudo apt install gh
-# https://github.com/estavrionto/esta_base.git
-# , i3, nala, chromium, xserver, thunar, lxtask, lxappaearance, arandr, picom/compton, gh, i3blocks
-# gh repo clone ChrisTitusTech/Debian-titus
 
 
-# https://code.visualstudio.com/docs/setup/linux
-# wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-
-
-# Debian Bookworm
-# deb http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
-# apt update
-# apt install nvidia-driver firmware-misc-nonfree
-# xrandr --output HDMI-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-0 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off --output DP-2 --off --output DP-1-1 --off --output HDMI-1-1 --off --output HDMI-1-2 --off --output DP-1-2 --off
-
+# exit i3 (logs you out of your X session)
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
