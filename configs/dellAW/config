@@ -7,7 +7,7 @@ set $shift Shift
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:System San Francisco Display 10
+font pango:System San Francisco Display 13
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -88,7 +88,7 @@ bindsym $mod+Shift+space floating toggle
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 #variables
-set $workspace1e  "11: Thunar "
+set $workspace1e  "11: Thunar 2"
 set $workspace2e  "12: code "
 set $workspace3e  "13: chrome "
 set $workspace4e  "14: python"
@@ -99,9 +99,9 @@ set $workspace8e  "18: gra3"
 set $workspace9e  "19: social"
 set $workspace10e "20: game"
 
-set $workspace1  "1: chrome "
-set $workspace2  "2: second "
-set $workspace3  "3: firefox"
+set $workspace1  "1: discord "
+set $workspace2  "2: top "
+set $workspace3  "3: task "
 set $workspace4  "4: sublime "
 set $workspace5  "5: VM Manager"
 set $workspace6  "6: "
@@ -205,7 +205,7 @@ client.unfocused        $bg-color           $inactive-bg-color $inactive-text-co
 client.focused_inactive $bg-color           $inactive-bg-color $inactive-text-color #00ff00
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
 
-bindsym $mod+d exec dmenu_run -sf grey99 -sb grey1 -nf grey60 -nb grey4 -fn 'System San Francisco Display'
+bindsym $mod+d exec dmenu_run -sf grey99 -sb grey1 -nf grey60 -nb grey4 -fn 'System San Francisco Display-15'
 bindsym $alt+c exec scrcpy
 
 bar {
@@ -227,20 +227,37 @@ exec "xrandr --output eDP-2 --primary --mode 1920x1080 --pos 0x0 --rotate normal
 
 # my own functions
 # use "xprop|grep CLASS" for getting class
-assign [class="Google-chrome"] $workspace3e
+# xrandr --output eDP-2 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 1920x0 --rotate normal 
+assign [class="discord"] $workspace1
+assign [class="Alacritty"] $workspace2
+assign [class="Lxtask"] $workspace3
+
+
 # assign [class="Chromium-browser"] $workspace3
-assign [class="firefox"] $workspace3
-
-assign [class="Code"] $workspace2e
+# assign [class="firefox"] $workspace3
 assign [class="Thunar"] $workspace1e
-assign [class="Lxtask"] $workspace10
-assign [class="dota2"] $workspace10e
+assign [class="Code"] $workspace2e
+assign [class="Google-chrome"] $workspace3e
+assign [class="steam"] $workspace5e
+assign [class="PrismLauncher"] $workspace5e
 
-assign [class="Steam"] $workspace5e
+# games
+assign [class="dota2"] $workspace10e
+assign [class="factorio"] $workspace10e
 assign [class="spring"] $workspace10e
+assign [class="RimWorldLinux"] $workspace10e
+assign [class="Beyond-All-Reason"] $workspace10e
+assign [class="OxygenNotIncluded"] $workspace10e
+assign [class="Nomifactory (CEu version, 1.6.1-beta-4, Normal Mode)"] $workspace10e
+
+# ark SE
+assign [class="steam_app_346110"] $workspace10e
+
 
 
 for_window [class="dota2"] floating disable
+# for_window [class="Beyond-All-Reason"] floating enable
+
 
 
 
@@ -270,7 +287,9 @@ bindsym $mod+Return [class=$Terminator_app_class] scratchpad show, resize set 18
 bindsym $mod+x [class=$Terminator_app_class] scratchpad show, resize set 1880px 1010px, move position center
 
 
-set $social_app "chromium --force-device-scale-factor=1.2"
+# set $social_app "chromium --force-device-scale-factor=1.2"
+set $social_app "chromium"
+
 exec $social_app
 
 set $social_app_class "Chromium"
@@ -285,7 +304,7 @@ exec $pavucontrol_app
 for_window [class=$Pavucontrol_app_class] move scratchpad
 bindsym $alt+s [class=$Pavucontrol_app_class] scratchpad show, resize set 1000px 700px, move position center
 
-####################### execute #########################################
+####################### execute startup #########################################
 exec compton -f
 # exec xfce4-power-manager
 # exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
@@ -299,10 +318,34 @@ exec google-chrome
 exec thunar
 exec code
 exec lxtask
+exec steam
+exec discord
 
 
 
+mode "passthrough" {
+    bindsym Mod4+Escape mode "default"
+}
+bindsym Mod4+Escape mode "passthrough"
 
+set $mode_screen Screenshot (f)ull, (w)indow, (s)election
+
+mode "$mode_screen" {
+    bindsym f exec --no-startup-id maim --format=png | xclip -selection clipboard -t image/png, mode "default"
+    bindsym w exec --no-startup-id maim --format=png --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png, mode "default"
+    bindsym s exec --no-startup-id maim --format=png --select | xclip -selection clipboard -t image/png, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+p mode "$mode_screen"
+bindsym $mod+$shift+s exec --no-startup-id maim --format=png --select | xclip -selection clipboard -t image/png
+## Screenshots
+# bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
+# bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
+# bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date)"
 
 
 # exit i3 (logs you out of your X session)
