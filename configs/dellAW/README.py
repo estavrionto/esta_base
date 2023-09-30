@@ -1,10 +1,14 @@
 # install instructions
 # https://askubuntu.com/questions/726972/dual-boot-windows-10-and-linux-ubuntu-on-separate-hard-drives
+
+
 # 1GB EFI
 # 30GB ext4 /
 # 20GB swap
 # 445GB ext4 /home
 # install debian
+
+
 # sudo apt install i3 xinit chromium git gh nala 
 # gh repo clone ChrisTitusTech/Debian-titus
 # gh repo clone estavrionto/esta_base
