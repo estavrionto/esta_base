@@ -19,6 +19,7 @@
 
 
 
+
 # Debian Bookworm https://wiki.debian.org/NvidiaGraphicsDrivers
 # sudo nala install linux-headers-amd64
 # sudo nano /etc/apt/sources.list
