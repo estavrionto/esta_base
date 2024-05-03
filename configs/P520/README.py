@@ -102,6 +102,13 @@
     # export QT_STYLE_OVERRIDE="gtk2"
     # export QT_QPA_PLATFORMTHEME="gtk2"
 
+
+    # sudo sh -c "echo 'deb http://ppa.launchpad.net/papirus/papirus/ubuntu jammy main' > /etc/apt/sources.list.d/papirus-ppa.list"
+    # sudo wget -qO /etc/apt/trusted.gpg.d/papirus-ppa.asc 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x9461999446FAF0DF770BFC9AE58A9D36647CAE7F'
+    # sudo nala update
+    # sudo nala install papirus-icon-theme
+
+
 # git config --global user.name "estavrionto"
 # git config --global user.email estavrionto@gmail.com
 
@@ -120,8 +127,48 @@
 # sudo cmake --install build
 
 
-# sudo nala install steam mangohud
+# sudo nala install steam mangohud htop neofetch lm-sensors
 
 # mamba https://github.com/conda-forge/miniforge
 # wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+
+
+# java download:
+    # cd /home/ab/Documents/Games
+    # wget https://javadl.oracle.com/webapps/download/AutoDL?BundleId=248763_8c876547113c4e4aab3c868e9e0ec572
+
+
+# https://unix.stackexchange.com/questions/578248/when-clicking-open-folder-the-system-launches-vscode
+    # xdg-mime query default inode/directory
+    # ls /usr/share/applications/*nar*
+    # /usr/share/applications/thunar.desktop
+    # xdg-mime default thunar.desktop inode/directory
+
+# mangohud %command% +fps_max 60 -high -map dota -novid -nojoy -novr
+# sudo nala install firmware-linux
+
+# rm -rf ~/.config/Code/GPUCache
+
+
+sudo mkdir -p /mnt/temp_ssd
+
+sudo mount /dev/nvme1n1p4 /mnt/temp_ssd
+
+
+# sudo nala install bluetooth blueman 
+install pipewire pipewire-audio pipewire-pulse wireplumber libspa-0.2-bluetooth
+
+sudo systemctl enable bluetooth.
+
+sudo systemctl start bluetooth.service
+
+
+
+# noise supression
+    # https://github.com/noisetorch/NoiseTorch
+    # tar -C $HOME -h -xzf NoiseTorch_x64_v0.12.2.tgz
+    # tar -C $HOME -h -xzf ~/Documents/noisetorch/NoiseTorch_x64_v0.12.2.tgz
+    # sudo setcap 'CAP_SYS_RESOURCE=+ep' ~/.local/bin/noisetorch
+
+# sudo nala install ./VencordDesktop_0.4.4_amd64.deb
 

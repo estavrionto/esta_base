@@ -5,7 +5,7 @@ set $alt mod1
 set $ctrl control
 set $shift Shift
 
-font pango:System San Francisco Display 13
+font pango:System San Francisco Display 11
 
 # Start XDG autostart .desktop files using dex. See also https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
@@ -68,6 +68,8 @@ bindsym $mod+w layout toggle tabbed splith stacking
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+# bindsym $alt+Tab workspace prev
+bindsym $alt+Tab exec "rofi -show combi run,window"
 
 
 # Define names for default workspaces for which we configure key bindings later on.
@@ -192,7 +194,7 @@ client.unfocused        $bg-color           $inactive-bg-color $inactive-text-co
 client.focused_inactive $bg-color           $inactive-bg-color $inactive-text-color #00ff00
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
 
-bindsym $mod+d exec dmenu_run -sf grey99 -sb grey1 -nf grey60 -nb grey4 -fn 'System San Francisco Display-15'
+bindsym $mod+d exec dmenu_run -sf grey99 -sb grey1 -nf grey60 -nb grey4 -fn 'System San Francisco Display-12'
 bindsym $alt+c exec scrcpy
 
 bar {
@@ -216,6 +218,7 @@ bar {
 # use "xprop|grep CLASS" for getting class
 # xrandr --output eDP-2 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 1920x0 --rotate normal 
 assign [class="discord"] $workspace6e
+assign [class="NoiseTorch"] $workspace6e
 # assign [class="Alacritty"] $workspace2
 assign [class="Lxtask"] $workspace7e
 
@@ -297,6 +300,7 @@ exec code
 exec lxtask
 exec steam
 exec discord
+exec noisetorch
 
 
 
