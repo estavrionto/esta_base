@@ -145,7 +145,7 @@
     # xdg-mime default thunar.desktop inode/directory
 
 # mangohud %command% +fps_max 60 -high -map dota -novid -nojoy -novr
-# sudo nala install firmware-linux
+# sudo nala install firmware-linux2
 
 # rm -rf ~/.config/Code/GPUCache
 
@@ -171,4 +171,40 @@ sudo systemctl start bluetooth.service
     # sudo setcap 'CAP_SYS_RESOURCE=+ep' ~/.local/bin/noisetorch
 
 # sudo nala install ./VencordDesktop_0.4.4_amd64.deb
+
+
+HP M220 Wired USB Optical Gaming Mouse
+    800 1600 2400 3200 4000 4800
+
+samsung tv 11*19 
+    https://downloadcenter.samsung.com/content/UM/201407/20140701144745613/[UES5000-ASIA]BN68-04047A-05ENG-0726.pdf
+    UA22ES5000R
+    (base) ab@P520:~/Documents/mouse/libinput$ xdpyinfo | grep -B 2 resolution
+    screen #0:
+    dimensions:    1920x1080 pixels (508x285 millimeters)
+    resolution:    96x96 dots per inch
+
+
+# flat
+xinput set-prop 12 "libinput Accel Profile Enabled" 0, 1, 0
+
+
+xinput set-prop 12 "libinput Accel Profile Enabled" 0, 0, 1
+xinput set-prop 12 "libinput Accel Custom Motion Points" 0.0, 0.0, 1.0
+xinput set-prop 12 "libinput Accel Custom Motion Step" 1.0
+
+
+xinput set-prop 12 "libinput Accel Profile Enabled" 0, 0, 1
+xinput set-prop 12 "libinput Accel Custom Motion Points" 1.0, 1.0
+xinput set-prop 12 "libinput Accel Custom Motion Step" 1.0
+
+sigmoid at 15
+xinput set-prop 12 "libinput Accel Profile Enabled" 0, 0, 1
+xinput set-prop 12 "libinput Accel Custom Motion Points" 0.000, 0.525, 1.332, 2.813, 5.568, 10.000, 15.648, 21.437, 26.671, 31.272, 35.424, 39.313, 43.059, 46.731, 50.367, 53.984, 57.592, 61.196, 64.798, 68.399, 72.000
+xinput set-prop 12 "libinput Accel Custom Motion Step" 4.0000000000
+
+sigmoid at 9, 800-4800, 
+xinput set-prop 12 "libinput Accel Profile Enabled" 0, 0, 1
+xinput set-prop 12 "libinput Accel Custom Motion Points" 0.000, 0.251, 0.506, 0.791, 1.234, 2.376, 5.205, 8.818, 11.411, 13.243, 14.819, 16.327, 17.818, 19.305, 20.790, 22.275, 23.760, 25.245, 26.730, 28.215, 29.700
+xinput set-prop 12 "libinput Accel Custom Motion Step" 1.5000000000
 

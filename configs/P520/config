@@ -235,7 +235,9 @@ assign [class="steam"] $workspace5e
 assign [class="PrismLauncher"] $workspace5e
 
 # games
+
 assign [class="dota2"] $workspace10e
+assign [class="steam_app_1422450"] $workspace10e
 assign [class="factorio"] $workspace10e
 assign [class="spring"] $workspace10e
 assign [class="RimWorldLinux"] $workspace10e
