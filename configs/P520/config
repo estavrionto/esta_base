@@ -75,16 +75,16 @@ bindsym $alt+Tab exec "rofi -show combi run,window"
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 #variables
-set $workspace1e  "11: Thunar 2"
-set $workspace2e  "12: code "
-set $workspace3e  "13: chrome "
-set $workspace4e  "14: python"
-set $workspace5e  "15: steam"
-set $workspace6e  "16: discord"
-set $workspace7e  "17: task"
-set $workspace8e  "18: fun"
-set $workspace9e  "19: social"
-set $workspace10e "20: game"
+ set $workspace1e  "11: Thunar 2"
+ set $workspace2e  "12: code "
+ set $workspace3e  "13: chrome "
+ set $workspace4e  "14: python"
+ set $workspace5e  "15: steam"
+ set $workspace6e  "16: discord"
+ set $workspace7e  "17: task"
+ set $workspace8e  "18: fun"
+ set $workspace9e  "19: social"
+ set $workspace10e "20: game"
 
 # set $workspace1  "1: discord "
 # set $workspace2  "2: top "
@@ -104,16 +104,16 @@ set $workspace10e "20: game"
 set $monitor_two HDMI-A-0
 
 # define ws-monitor relation
-workspace $workspace1e  output $monitor_two
-workspace $workspace2e  output $monitor_two
-workspace $workspace3e  output $monitor_two
-workspace $workspace4e  output $monitor_two
-workspace $workspace5e  output $monitor_two
-workspace $workspace6e  output $monitor_two
-workspace $workspace7e  output $monitor_two
-workspace $workspace8e  output $monitor_two
-workspace $workspace9e  output $monitor_two
-workspace $workspace10e output $monitor_two
+ workspace $workspace1e  output $monitor_two
+ workspace $workspace2e  output $monitor_two
+ workspace $workspace3e  output $monitor_two
+ workspace $workspace4e  output $monitor_two
+ workspace $workspace5e  output $monitor_two
+ workspace $workspace6e  output $monitor_two
+ workspace $workspace7e  output $monitor_two
+ workspace $workspace8e  output $monitor_two
+ workspace $workspace9e  output $monitor_two
+ workspace $workspace10e output $monitor_two
 
 # workspace $workspace1  output $monitor_one
 # workspace $workspace2  output $monitor_one
@@ -150,7 +150,6 @@ workspace $workspace10e output $monitor_two
 #  bindsym $mod+0 workspace $workspace10
 
 # move focused container to workspace
-
  bindsym $alt+Shift+1 move container to workspace $workspace1e
  bindsym $alt+Shift+2 move container to workspace $workspace2e
  bindsym $alt+Shift+3 move container to workspace $workspace3e
@@ -195,7 +194,7 @@ client.focused_inactive $bg-color           $inactive-bg-color $inactive-text-co
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
 
 bindsym $mod+d exec dmenu_run -sf grey99 -sb grey1 -nf grey60 -nb grey4 -fn 'System San Francisco Display-12'
-bindsym $alt+c exec scrcpy
+# bindsym $alt+c exec scrcpy
 
 bar {
         tray_output $monitor_two

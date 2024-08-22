@@ -1,0 +1,204 @@
+# i3 config file (v4)
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+# made from esta_base/configs/P520/config
+set $mod mod4
+set $alt mod1
+set $ctrl control
+set $shift Shift
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+# font pango:monospace 8
+font pango:System San Francisco Display 11
+
+
+############################ exec ####################################
+# Start XDG autostart .desktop files using dex. See also
+# https://wiki.archlinux.org/index.php/XDG_Autostart
+exec --no-startup-id dex --autostart --environment i3
+
+# The combination of xss-lock, nm-applet and pactl is a popular choice, so
+# they are included here as an example. Modify as you see fit.
+
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# NetworkManager is the most popular way to manage wireless networks on Linux,
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id nm-applet
+
+############################ power off ####################################
+
+set $Locker i3lock --nofork -c 000000 && sleep 1
+
+set $mode_system System (l)ock, (e)xit , (s)uspend, (h)ibernate, (r)eboot, (p)oweroff
+
+mode "$mode_system" {
+    #exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym p exec --no-startup-id systemctl poweroff -i, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $alt+q exec --no-startup-id $Locker
+bindsym $mod+$shift+e mode "$mode_system"
+##############################################################################
+
+floating_modifier $mod
+tiling_drag modifier titlebar
+workspace_layout tabbed 
+
+bindsym $mod+Shift+r restart
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# bindsym $mod+d exec dmenu_run -sf grey99 -sb grey1 -nf grey60 -nb grey4 -fn 'System San Francisco Display-12'
+
+# kill focused window
+bindsym $mod+q kill
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+# change layout
+bindsym $mod+w layout toggle tabbed splith stacking
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+# bindsym $alt+Tab workspace prev
+# work on
+# bindsym $alt+Tab exec "rofi -show combi run,window"
+##############################################################################
+
+
+
+
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+
+
+###########################################################################################################################
+# Define names
+ set $workspace1  "1: Thunar"
+ set $workspace2  "2: code"
+ set $workspace3  "3: chrome"
+ set $workspace4  "4: python"
+ set $workspace5  "5: steam"
+ set $workspace6  "6: discord"
+ set $workspace7  "7: main4"
+ set $workspace8  "8: main3"
+ set $workspace9  "9: main2"
+ set $workspace0  "0: main1"
+
+# switch to workspace
+ bindsym $alt+1 workspace $workspace1
+ bindsym $alt+2 workspace $workspace2
+ bindsym $alt+3 workspace $workspace3
+ bindsym $alt+4 workspace $workspace4
+ bindsym $alt+5 workspace $workspace5
+ bindsym $alt+6 workspace $workspace6
+ bindsym $alt+7 workspace $workspace7
+ bindsym $alt+8 workspace $workspace8
+ bindsym $alt+9 workspace $workspace9
+ bindsym $alt+0 workspace $workspace0
+
+# move focused container to workspace
+ bindsym $alt+$shift+1 move container to workspace $workspace1
+ bindsym $alt+$shift+2 move container to workspace $workspace2
+ bindsym $alt+$shift+3 move container to workspace $workspace3
+ bindsym $alt+$shift+4 move container to workspace $workspace4
+ bindsym $alt+$shift+5 move container to workspace $workspace5
+ bindsym $alt+$shift+6 move container to workspace $workspace6
+ bindsym $alt+$shift+7 move container to workspace $workspace7
+ bindsym $alt+$shift+8 move container to workspace $workspace8
+ bindsym $alt+$shift+9 move container to workspace $workspace9
+ bindsym $alt+$shift+0 move container to workspace $workspace0
+
+######################################## ScratchPad commands ##################################
+bindsym $alt+space scratchpad show
+
+
+# set $tilix_app "tilix"
+# set $Tilix_app_class "Tilix"
+# exec $tilix_app
+# for_window [class=$Tilix_app_class] move scratchpad
+# bindsym $alt+p [class=$Tilix_app_class] scratchpad show, resize set 1880px 1010px, move position center
+
+
+set $terminator_app "terminator"
+set $Terminator_app_class "Terminator"
+exec $terminator_app
+for_window [class=$Terminator_app_class] move scratchpad
+bindsym $mod+Return [class=$Terminator_app_class] scratchpad show, resize set 1880px 1100px, move position center
+bindsym $mod+x [class=$Terminator_app_class] scratchpad show, resize set 1880px 1100px, move position center
+
+
+# set $social_app "chromium --force-device-scale-factor=1.2"
+set $social_app "chromium"
+set $social_app_class "Chromium"
+exec $social_app
+for_window [class=$social_app_class] move scratchpad
+bindsym $alt+Return [class=$social_app_class] scratchpad show, resize set 1880px 1100px, move position center
+bindsym $alt+x [class=$social_app_class] scratchpad show, resize set 1880px 1100px, move position center
+for_window [class=$social_app_class] border pixel 3
+
+set $pavucontrol_app "pavucontrol"
+set $Pavucontrol_app_class "pavucontrol"
+exec $pavucontrol_app
+for_window [class=$Pavucontrol_app_class] move scratchpad
+bindsym $alt+s [class=$Pavucontrol_app_class] scratchpad show, resize set 1000px 700px, move position center
+###########################################################################################################################
+#colors
+set $bg-color 	         #000000
+set $bg-border           #000000
+set $inactive-bg-color   #090909
+set $font System San Francisco Display
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #6a6a6a
+
+# window colors
+#                       border              background         text                 indicator
+client.focused          $bg-color           $bg-color          $text-color          #00ff00
+client.unfocused        $bg-color           $inactive-bg-color $inactive-text-color #00ff00
+client.focused_inactive $bg-color           $inactive-bg-color $inactive-text-color #00ff00
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+
+bindsym $mod+d exec dmenu_run -sf grey99 -sb grey1 -nf grey60 -nb grey4 -fn 'System San Francisco Display-12'
+# bindsym $alt+c exec scrcpy
+
+bar {
+        # tray_output $monitor_two
+        # status_command i3status
+        status_command "i3blocks -c ~/Software/esta_base/configs/Inspiron_16_5625/i3blocks.conf"
+        colors {
+		background $bg-color
+	    	separator #757575
+		#                  border             background         text
+		focused_workspace  $bg-color          $bg-color          $text-color
+		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+	}
+}
+
+###########################################################################################################################

@@ -73,6 +73,7 @@ configure ~/.xinitrc
     cp /etc/X11/xinit/xinitrc ~/.xinitrc 
     https://github.com/coditva/i3-config/blob/master/xinitrc
 
+
 https://github.com/Jguer/yay
     git clone https://aur.archlinux.org/yay.git
     cd yay
@@ -84,4 +85,8 @@ github:
 yay -S google-chrome
 yay -S visual-studio-code-bin
 
-
+i3 config working on:
+    cp ~/.config/i3/config ~/Software/esta_base/configs/Inspiron_16_5625/
+    rm -rf ~/.config/i3/config
+    ln -s ~/Software/esta_base/configs/Inspiron_16_5625/config ~/.config/i3/config
+    cp ~/Software/esta_base/configs/P520/i3blocks.conf ~/Software/esta_base/configs/Inspiron_16_5625/
