@@ -42,7 +42,7 @@
 # wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 # sudo nala install ./google-chrome-stable_current_amd64.deb
 
-# changed trixie to testing in sources
+# changed trixie to testing in sources: cat /etc/apt/sources.list
     # deb http://deb.debian.org/debian/ testing main contrib non-free non-free-firmware
     # deb-src http://deb.debian.org/debian/ testing non-free-firmware
 
