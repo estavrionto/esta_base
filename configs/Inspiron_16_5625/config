@@ -28,6 +28,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+
+
 ############################ power off ####################################
 
 set $Locker i3lock --nofork -c 000000 && sleep 1
@@ -102,7 +104,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
  set $workspace1  "1: Thunar"
  set $workspace2  "2: code"
  set $workspace3  "3: chrome"
- set $workspace4  "4: python"
+ set $workspace4  "4: misc"
  set $workspace5  "5: steam"
  set $workspace6  "6: discord"
  set $workspace7  "7: main4"
@@ -133,6 +135,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
  bindsym $alt+$shift+8 move container to workspace $workspace8
  bindsym $alt+$shift+9 move container to workspace $workspace9
  bindsym $alt+$shift+0 move container to workspace $workspace0
+###########################################################################################################################
+
 
 ######################################## ScratchPad commands ##################################
 bindsym $alt+space scratchpad show
@@ -167,6 +171,31 @@ set $Pavucontrol_app_class "pavucontrol"
 exec $pavucontrol_app
 for_window [class=$Pavucontrol_app_class] move scratchpad
 bindsym $alt+s [class=$Pavucontrol_app_class] scratchpad show, resize set 1000px 700px, move position center
+
+exec thunar
+exec code
+exec google-chrome
+exec lxtask
+exec steam
+exec discord
+
+
+# exec compton -f
+# exec nitrogen --restore
+# exec i3-msg workspace $workspace3e
+# exec i3-msg workspace $workspace8e
+# exec noisetorch
+
+
+assign [class="Thunar"] $workspace1
+assign [class="Code"] $workspace2
+assign [class="Google-chrome"] $workspace3
+assign [class="Lxtask"] $workspace4
+assign [class="steam"] $workspace5
+assign [class="discord"] $workspace6
+
+
+
 ###########################################################################################################################
 #colors
 set $bg-color 	         #000000
@@ -188,7 +217,8 @@ bindsym $mod+d exec dmenu_run -sf grey99 -sb grey1 -nf grey60 -nb grey4 -fn 'Sys
 # bindsym $alt+c exec scrcpy
 
 bar {
-        # tray_output $monitor_two
+        tray_output primary
+        # position top
         # status_command i3status
         status_command "i3blocks -c ~/Software/esta_base/configs/Inspiron_16_5625/i3blocks.conf"
         colors {
@@ -201,4 +231,20 @@ bar {
 	}
 }
 
+###########################################################################################################################
+
+set $mode_screen Screenshot (f)ull, (w)indow, (s)election
+
+mode "$mode_screen" {
+    bindsym f exec --no-startup-id maim --format=png | xclip -selection clipboard -t image/png, mode "default"
+    bindsym w exec --no-startup-id maim --format=png --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png, mode "default"
+    bindsym s exec --no-startup-id maim --format=png --select | xclip -selection clipboard -t image/png, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+p mode "$mode_screen"
+bindsym $mod+$shift+s exec --no-startup-id maim --format=png --select | xclip -selection clipboard -t image/png
 ###########################################################################################################################

@@ -57,6 +57,12 @@ archinstall
 
 sudo pacman -Syu
 sudo pacman -S neofetch i3 terminator chrmoium dmenu git base-devel github-cli
+sudo pacman -S --needed thunar mousepad thunar-archive-plugin thunar-media-tags-plugin
+sudo pacman -S --needed lxtask lxappearance-gtk3 materia-gtk-theme papirus-icon-theme	
+sudo pacman -S --needed ranger rofi dmenu firefox vlc
+sudo pacman -S --needed maim xclip xdotool gnome-keyring picom brightnessctl
+
+
 
 
 https://gist.github.com/fjpalacios/441f2f6d27f25ee238b9bfcb068865db
@@ -68,6 +74,20 @@ sudo nano /etc/pacman.conf
 
 https://gist.github.com/fjpalacios/441f2f6d27f25ee238b9bfcb068865db
     sudo pacman -S xorg-server xorg-apps xorg-xinit
+    sudo pacman -S noto-fonts ttf-ubuntu-font-family ttf-dejavu ttf-freefont
+    sudo pacman -S ttf-liberation ttf-droid ttf-roboto terminus-font
+    sudo pacman -S ttf--font-awesome
+
+    sudo pacman -S tlp tlp-rdw powertop acpi
+    sudo systemctl enable tlp
+    check again: maybe did not start well
+        sudo systemctl enable tlp-sleep
+        sudo systemctl mask systemd-rfkill.service
+        sudo systemctl mask systemd-rfkill.socket
+
+    yay -S slimbookbattery
+    yay -S slimbookamdcontroller
+
 
 configure ~/.xinitrc
     cp /etc/X11/xinit/xinitrc ~/.xinitrc 
@@ -90,3 +110,23 @@ i3 config working on:
     rm -rf ~/.config/i3/config
     ln -s ~/Software/esta_base/configs/Inspiron_16_5625/config ~/.config/i3/config
     cp ~/Software/esta_base/configs/P520/i3blocks.conf ~/Software/esta_base/configs/Inspiron_16_5625/
+
+picom:
+    cp /etc/xdg/picom.conf ~/Software/esta_base/configs/Inspiron_16_5625/
+
+work on:
+    # compositing:
+    #     picom
+    brightness: https://www.reddit.com/r/i3wm/comments/pfslli/adjusting_brightnessbacklight_of_the_screen_using/
+    volume
+    # batter info
+    # battery optimisations
+        # tlp, slimbookbattery
+    hybrid-sleep
+    conda
+    # xinitrc
+    xserver settings
+    # wifi
+    #     sudo pacman -S --needed network-manager-applet
+    # start up programs
+    # screen shot
