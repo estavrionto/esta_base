@@ -59,7 +59,6 @@ sudo pacman -Syu
 sudo pacman -S neofetch i3 terminator chrmoium dmenu git base-devel github-cli
 sudo pacman -S --needed thunar mousepad thunar-archive-plugin thunar-media-tags-plugin
 sudo pacman -S --needed lxtask lxappearance-gtk3 materia-gtk-theme papirus-icon-theme	
-sudo pacman -S --needed ranger rofi dmenu firefox vlc
 sudo pacman -S --needed maim xclip xdotool gnome-keyring picom brightnessctl
 
 
@@ -76,7 +75,7 @@ https://gist.github.com/fjpalacios/441f2f6d27f25ee238b9bfcb068865db
     sudo pacman -S xorg-server xorg-apps xorg-xinit
     sudo pacman -S noto-fonts ttf-ubuntu-font-family ttf-dejavu ttf-freefont
     sudo pacman -S ttf-liberation ttf-droid ttf-roboto terminus-font
-    sudo pacman -S ttf--font-awesome
+    sudo pacman -S --needed ttf-font-awesome adobe-source-code-pro-fonts
 
     sudo pacman -S tlp tlp-rdw powertop acpi
     sudo systemctl enable tlp
@@ -114,16 +113,26 @@ i3 config working on:
 picom:
     cp /etc/xdg/picom.conf ~/Software/esta_base/configs/Inspiron_16_5625/
 
+
+mamba:
+
+    mamba activate env_jupyter_aug24
+    mamba install jupyterlab nb_conda_kernels ipywidgets
+    mamba activate env_py_aug24
+    mamba install -c plotly plotly=5.23.0
+
+
 work on:
     # compositing:
     #     picom
-    brightness: https://www.reddit.com/r/i3wm/comments/pfslli/adjusting_brightnessbacklight_of_the_screen_using/
-    volume
-    # batter info
+    # brightness: https://www.reddit.com/r/i3wm/comments/pfslli/adjusting_brightnessbacklight_of_the_screen_using/
+    # volume:
+    #     $ xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
+    # battery info
     # battery optimisations
         # tlp, slimbookbattery
     hybrid-sleep
-    conda
+    # conda
     # xinitrc
     xserver settings
     # wifi

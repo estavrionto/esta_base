@@ -97,7 +97,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-
+# XF86MonBrightnessDown
+# XF86MonBrightnessUp
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
 ###########################################################################################################################
 # Define names
@@ -174,8 +177,9 @@ bindsym $alt+s [class=$Pavucontrol_app_class] scratchpad show, resize set 1000px
 
 exec thunar
 exec code
-exec google-chrome
+exec google-chrome-stable
 exec lxtask
+# exec slimbookbattery  
 exec steam
 exec discord
 
@@ -191,6 +195,7 @@ assign [class="Thunar"] $workspace1
 assign [class="Code"] $workspace2
 assign [class="Google-chrome"] $workspace3
 assign [class="Lxtask"] $workspace4
+# assign [class="slimbookbatterypreferences.py"] $workspace4
 assign [class="steam"] $workspace5
 assign [class="discord"] $workspace6
 
