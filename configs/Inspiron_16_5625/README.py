@@ -57,10 +57,10 @@ archinstall
 
 sudo pacman -Syu
 sudo pacman -S neofetch i3 terminator chrmoium dmenu git base-devel github-cli
-sudo pacman -S --needed thunar mousepad thunar-archive-plugin thunar-media-tags-plugin
+sudo pacman -S --needed thunar mousepad thunar-archive-plugin thunar-media-tags-plugin gvfs thunar-volman gvfs-mtp 
 sudo pacman -S --needed lxtask lxappearance-gtk3 materia-gtk-theme papirus-icon-theme	
 sudo pacman -S --needed maim xclip xdotool gnome-keyring picom brightnessctl
-
+yay -S discord bash-completion discord-screenaudio 
 
 
 
@@ -77,6 +77,8 @@ https://gist.github.com/fjpalacios/441f2f6d27f25ee238b9bfcb068865db
     sudo pacman -S ttf-liberation ttf-droid ttf-roboto terminus-font
     sudo pacman -S --needed ttf-font-awesome adobe-source-code-pro-fonts
 
+
+    list fonts: fc-list|awk '{$1=""}1'|cut -d: -f1|sort|uniq
     sudo pacman -S tlp tlp-rdw powertop acpi
     sudo systemctl enable tlp
     check again: maybe did not start well
@@ -84,7 +86,7 @@ https://gist.github.com/fjpalacios/441f2f6d27f25ee238b9bfcb068865db
         sudo systemctl mask systemd-rfkill.service
         sudo systemctl mask systemd-rfkill.socket
 
-    yay -S slimbookbattery
+    yay -S slimbookbattery acpi
     yay -S slimbookamdcontroller
 
 
@@ -118,24 +120,41 @@ mamba:
 
     mamba activate env_jupyter_aug24
     mamba install jupyterlab nb_conda_kernels ipywidgets
+    mamba install -c plotly plotly=5.23.0
+
     mamba activate env_py_aug24
     mamba install -c plotly plotly=5.23.0
+    mamba install ipykernel
+
+
+    ln -s ~/BackUp/education/GaTech/Research/fanLab ~/Research/fanLab
+
 
 
 work on:
-    # compositing:
-    #     picom
-    # brightness: https://www.reddit.com/r/i3wm/comments/pfslli/adjusting_brightnessbacklight_of_the_screen_using/
-    # volume:
-    #     $ xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
-    # battery info
-    # battery optimisations
-        # tlp, slimbookbattery
-    hybrid-sleep
-    # conda
-    # xinitrc
-    xserver settings
     # wifi
     #     sudo pacman -S --needed network-manager-applet
     # start up programs
     # screen shot
+    # discord
+    # brightness: https://www.reddit.com/r/i3wm/comments/pfslli/adjusting_brightnessbacklight_of_the_screen_using/
+    # volume:
+    #     $ xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
+    # conda, mamba
+
+
+
+    battery optimisations
+        acpi, optimisations, battery info
+        # tlp, slimbookbattery
+    hybrid-sleep
+        hibernate needs work on
+        # suspend works
+    xinitrc
+    xserver settings
+    microphone
+    compositing:
+        picom optimisatoin
+
+
+wifi: https://gatech.service-now.com/technology?id=kb_article_view&sysparm_article=KB0026877

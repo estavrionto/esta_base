@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+source /home/esta/Software/miniforge3/bin/activate env_jupyter_aug24
+jupyter -h
+jupyter lab
