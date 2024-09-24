@@ -60,7 +60,9 @@ sudo pacman -S neofetch i3 terminator chrmoium dmenu git base-devel github-cli
 sudo pacman -S --needed thunar mousepad thunar-archive-plugin thunar-media-tags-plugin gvfs thunar-volman gvfs-mtp 
 sudo pacman -S --needed lxtask lxappearance-gtk3 materia-gtk-theme papirus-icon-theme	
 sudo pacman -S --needed maim xclip xdotool gnome-keyring picom brightnessctl
-yay -S discord bash-completion discord-screenaudio 
+yay -S discord bash-completion discord-screenaudio xarchiver
+sudo pacman -S --needed unzip zip unrar p7zip 
+yay gimp ffmpegthumbnailer tumbler tumbler-extra-thumbnailers shotwell
 
 
 
@@ -142,7 +144,8 @@ work on:
     #     $ xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
     # conda, mamba
 
-
+    dropbox
+    tqdm for loop python
 
     battery optimisations
         acpi, optimisations, battery info
@@ -158,3 +161,28 @@ work on:
 
 
 wifi: https://gatech.service-now.com/technology?id=kb_article_view&sysparm_article=KB0026877
+
+showconsolefont
+cd /usr/share/kbd/consolefonts
+setfont ter-d28b.psf.gz
+ter
+sudo vim /etc/vconsole
+    FONT=ter-d28b.psf.gz
+
+
+installed zen kernel
+cd /boot/loader/entries
+added:
+    2024-09-23_linux-zen.conf
+        # created from: /boot/loader/entries/2024-08-22_16-37-00_linux-lts.conf
+        # Created by: esta
+        # Created on: 2024-09-23
+        title   Arch Linux (linux-zen)
+        linux   /vmlinuz-linux-zen
+        initrd  /initramfs-linux-zen.img
+        options root=PARTUUID=ffc44a7a-050b-4f84-a185-ea39622f6762 zswap.enabled=0 rw rootfstype=ext4
+
+    2024-09-23_linux-zen-fallback.conf
+
+pavucontrol dark mode:
+    https://youtu.be/mOXd_SOrDbA
