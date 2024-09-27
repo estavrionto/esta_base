@@ -87,10 +87,11 @@ mkdir Software
 cd Software
 gh repo clone estavrionto/esta_base
 
-yay -S visual-studio-code-bin mousepad google-chrome-stable lxtask lxappearance-gtk3 discord discord-screenaudio shotwell pavucontrol
+yay -S visual-studio-code-bin mousepad google-chrome
+yay -S lxtask lxappearance-gtk3 discord discord-screenaudio shotwell pavucontrol
 yay -S thunar thunar-archive-plugin thunar-media-tags-plugin gvfs thunar-volman gvfs-mtp xarchiver unzip zip unrar p7zip
 yay -S materia-gtk-theme papirus-icon-theme	
-yay -S xorg-xinit acpi xclip xdotool gnome-keyring picom brightnessctl bash-completion neofetch
+yay -S xorg-xinput acpi xclip xdotool gnome-keyring picom brightnessctl bash-completion neofetch
 yay -S gimp ffmpegthumbnailer tumbler tumbler-extra-thumbnailers maim nm-connection-editor network-manager-applet
 
 
