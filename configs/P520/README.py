@@ -184,7 +184,7 @@ samsung tv 11*19
     dimensions:    1920x1080 pixels (508x285 millimeters)
     resolution:    96x96 dots per inch
 
-
+Projects/plot_1/libinput.ipynb
 # flat
 xinput set-prop 12 "libinput Accel Profile Enabled" 0, 1, 0
 
@@ -208,3 +208,5 @@ xinput set-prop 12 "libinput Accel Profile Enabled" 0, 0, 1
 xinput set-prop 12 "libinput Accel Custom Motion Points" 0.000, 0.251, 0.506, 0.791, 1.234, 2.376, 5.205, 8.818, 11.411, 13.243, 14.819, 16.327, 17.818, 19.305, 20.790, 22.275, 23.760, 25.245, 26.730, 28.215, 29.700
 xinput set-prop 12 "libinput Accel Custom Motion Step" 1.5000000000
 
+sudo mount /dev/nvme0n1p3 /mnt/temp_ssd
+sudo nala install ntfs-3g
