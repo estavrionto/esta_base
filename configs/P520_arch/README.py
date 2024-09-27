@@ -89,7 +89,7 @@ gh repo clone estavrionto/esta_base
 
 yay -S visual-studio-code-bin mousepad google-chrome
 yay -S lxtask lxappearance-gtk3 discord discord-screenaudio shotwell pavucontrol
-yay -S thunar thunar-archive-plugin thunar-media-tags-plugin gvfs thunar-volman gvfs-mtp xarchiver unzip zip unrar p7zip
+yay -S thunar thunar-archive-plugin thunar-media-tags-plugin gvfs thunar-volman gvfs-mtp xarchiver unzip zip unrar p7zip ntfs-3g
 yay -S xorg-xinput acpi xclip xdotool gnome-keyring picom brightnessctl bash-completion neofetch
 yay -S gimp ffmpegthumbnailer tumbler tumbler-extra-thumbnailers maim nm-connection-editor network-manager-applet
 
@@ -137,9 +137,14 @@ sudo mousepad /etc/vconsole
     FONT=ter-d28b.psf.gz
 
 
+mouse: from P520 README
+    # flat
+    xinput set-prop 12 "libinput Accel Profile Enabled" 0, 1, 0
 
 
-
+# git config --global user.name "estavrionto"
+# git config --global user.email estavrionto@gmail.com
+# git config pull.rebase false
 
 
 
