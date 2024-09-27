@@ -56,7 +56,9 @@ archinstall
 
 
 sudo pacman -Syu
-sudo pacman -S neofetch i3 terminator chrmoium dmenu git base-devel github-cli
+sudo pacman -S --needed neofetch i3 terminator chrmoium dmenu git base-devel github-cli
+
+
 sudo pacman -S --needed thunar mousepad thunar-archive-plugin thunar-media-tags-plugin gvfs thunar-volman gvfs-mtp 
 sudo pacman -S --needed lxtask lxappearance-gtk3 materia-gtk-theme papirus-icon-theme	
 sudo pacman -S --needed maim xclip xdotool gnome-keyring picom brightnessctl
@@ -72,6 +74,25 @@ sudo nano /etc/pacman.conf
     VerbosePkgLists
     Color
     ILoveCandy
+
+
+terminator:
+    cp ~/.config/terminator/config ~/Software/esta_base/configs/Inspiron_16_5625/terminator_config
+    rm -rf ~/.config/terminator/config
+    ln -s ~/Software/esta_base/configs/Inspiron_16_5625/terminator_config ~/.config/terminator/config
+
+configure ~/.xinitrc
+    cp /etc/X11/xinit/xinitrc ~/.xinitrc 
+    https://github.com/coditva/i3-config/blob/master/xinitrc
+    cp ~/.xinitrc ~/Software/esta_base/configs/Inspiron_16_5625/xinitrc
+    rm -rf ~/.xinitrc
+    ln -s ~/Software/esta_base/configs/Inspiron_16_5625/xinitrc ~/.xinitrc
+configure bash
+    cp ~/.bashrc ~/Software/esta_base/configs/Inspiron_16_5625/bashrc
+    rm -rf ~/.bashrc
+    ln -s ~/Software/esta_base/configs/Inspiron_16_5625/bashrc ~/.bashrc
+
+
 
 https://gist.github.com/fjpalacios/441f2f6d27f25ee238b9bfcb068865db
     sudo pacman -S xorg-server xorg-apps xorg-xinit
@@ -92,9 +113,7 @@ https://gist.github.com/fjpalacios/441f2f6d27f25ee238b9bfcb068865db
     yay -S slimbookamdcontroller
 
 
-configure ~/.xinitrc
-    cp /etc/X11/xinit/xinitrc ~/.xinitrc 
-    https://github.com/coditva/i3-config/blob/master/xinitrc
+
 
 
 https://github.com/Jguer/yay
@@ -194,3 +213,6 @@ yay ventoy
 yay ventoy-bin:
     worked
     made 4GB kingston pendrive ventoy
+
+
+
