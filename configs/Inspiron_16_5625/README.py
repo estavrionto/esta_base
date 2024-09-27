@@ -186,3 +186,11 @@ added:
 
 pavucontrol dark mode:
     https://youtu.be/mOXd_SOrDbA
+
+
+yay ventoy
+    ran for long time, interrupted
+    added 2GB to /root
+yay ventoy-bin:
+    worked
+    made 4GB kingston pendrive ventoy
