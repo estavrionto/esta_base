@@ -92,6 +92,12 @@ configure bash
     rm -rf ~/.bashrc
     ln -s ~/Software/esta_base/configs/Inspiron_16_5625/bashrc ~/.bashrc
 
+configure gtk2:
+    cp ~/.gtkrc-2.0 ~/Software/esta_base/configs/Inspiron_16_5625/gtkrc_2
+    rm -rf ~/.gtkrc-2.0
+    ln -s ~/Software/esta_base/configs/Inspiron_16_5625/gtkrc_2 ~/.gtkrc-2.0.mine
+mkdir ~/.config/gtk-4.0/
+ln -s ~/.config/gtk-3.0/settings.ini ~/.config/gtk-4.0/settings.ini
 
 
 https://gist.github.com/fjpalacios/441f2f6d27f25ee238b9bfcb068865db
@@ -114,7 +120,7 @@ https://gist.github.com/fjpalacios/441f2f6d27f25ee238b9bfcb068865db
 
 
 
-
+xdg-desktop-portal xapp
 
 https://github.com/Jguer/yay
     git clone https://aur.archlinux.org/yay.git

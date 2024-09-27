@@ -90,10 +90,14 @@ gh repo clone estavrionto/esta_base
 yay -S visual-studio-code-bin mousepad google-chrome
 yay -S lxtask lxappearance-gtk3 discord discord-screenaudio shotwell pavucontrol
 yay -S thunar thunar-archive-plugin thunar-media-tags-plugin gvfs thunar-volman gvfs-mtp xarchiver unzip zip unrar p7zip
-yay -S materia-gtk-theme papirus-icon-theme	
 yay -S xorg-xinput acpi xclip xdotool gnome-keyring picom brightnessctl bash-completion neofetch
 yay -S gimp ffmpegthumbnailer tumbler tumbler-extra-thumbnailers maim nm-connection-editor network-manager-applet
 
+
+# https://gist.github.com/fjpalacios/441f2f6d27f25ee238b9bfcb068865db
+yay -S materia-gtk-theme papirus-icon-theme	
+yay -S noto-fonts ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-liberation ttf-droid ttf-roboto terminus-font ttf-font-awesome adobe-source-code-pro-fonts
+list fonts: fc-list|awk '{$1=""}1'|cut -d: -f1|sort|uniq
 
 
 i3 config working on:
@@ -116,6 +120,21 @@ terminator:
     rm -rf ~/.config/terminator/config
     ln -s ~/Software/esta_base/configs/P520_arch/terminator_config ~/.config/terminator/config
 
+sudo mousepad /etc/pacman.conf
+    VerbosePkgLists
+    Color
+    ILoveCandy
+
+mkdir ~/.config/gtk-4.0/
+ln -s ~/.config/gtk-3.0/settings.ini ~/.config/gtk-4.0/settings.ini
+
+
+showconsolefont
+cd /usr/share/kbd/consolefonts
+setfont ter-d28b.psf.gz
+ter
+sudo mousepad /etc/vconsole
+    FONT=ter-d28b.psf.gz
 
 
 
@@ -130,11 +149,6 @@ terminator:
 
 
 
-# https://gist.github.com/fjpalacios/441f2f6d27f25ee238b9bfcb068865db
-# sudo pacman -S noto-fonts ttf-ubuntu-font-family ttf-dejavu ttf-freefont
-# sudo pacman -S ttf-liberation ttf-droid ttf-roboto terminus-font
-# sudo pacman -S --needed ttf-font-awesome adobe-source-code-pro-fonts
-list fonts: fc-list|awk '{$1=""}1'|cut -d: -f1|sort|uniq
 
 
 
