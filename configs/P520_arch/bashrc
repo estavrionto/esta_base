@@ -6,8 +6,8 @@
 [[ $- != *i* ]] && return
 
 
-if [ -d "/home/esta/Software/esta_base/scripts" ]; then
-    export PATH="$PATH:/home/esta/Software/esta_base/scripts"
+if [ -d "/home/ab/Software/esta_base/scripts" ]; then
+    export PATH="$PATH:/home/ab/Software/esta_base/scripts"
 fi
 
 alias ls='ls --color=auto'
@@ -20,20 +20,20 @@ PS1='[\u@\h \W]\$ '
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/esta/Software/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/ab/Software/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/esta/Software/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/home/esta/Software/miniforge3/etc/profile.d/conda.sh"
+    if [ -f "/home/ab/Software/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/home/ab/Software/miniforge3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/esta/Software/miniforge3/bin:$PATH"
+        export PATH="/home/ab/Software/miniforge3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 
-if [ -f "/home/esta/Software/miniforge3/etc/profile.d/mamba.sh" ]; then
-    . "/home/esta/Software/miniforge3/etc/profile.d/mamba.sh"
+if [ -f "/home/ab/Software/miniforge3/etc/profile.d/mamba.sh" ]; then
+    . "/home/ab/Software/miniforge3/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
 

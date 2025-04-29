@@ -90,8 +90,15 @@ gh repo clone estavrionto/esta_base
 yay -S visual-studio-code-bin mousepad google-chrome
 yay -S lxtask lxappearance-gtk3 discord discord-screenaudio shotwell pavucontrol
 yay -S thunar thunar-archive-plugin thunar-media-tags-plugin gvfs thunar-volman gvfs-mtp xarchiver unzip zip unrar p7zip ntfs-3g
-yay -S xorg-xinput acpi xclip xdotool gnome-keyring picom brightnessctl bash-completion neofetch
+yay -S xorg-xinput acpi xclip xdotool gnome-keyring picom brightnessctl bash-completion neofetch wget
 yay -S gimp ffmpegthumbnailer tumbler tumbler-extra-thumbnailers maim nm-connection-editor network-manager-applet
+
+
+graphics:
+yay -S yay vulkan-amdgpu-pro amdgpu-pro-oglp lib32-libdrm lib32-glib2
+yay -S mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon libva-mesa-driver libva-utils
+You could use "lspci -v" and look at what driver is in use under your VGA controller.
+vulkaninfo --summary
 
 
 # https://gist.github.com/fjpalacios/441f2f6d27f25ee238b9bfcb068865db
@@ -139,19 +146,45 @@ sudo mousepad /etc/vconsole
 
 mouse: from P520 README
     # flat
-    xinput set-prop 12 "libinput Accel Profile Enabled" 0, 1, 0
+    xinput set-prop 9 "libinput Accel Profile Enabled" 0, 1, 0
 
 
-# git config --global user.name "estavrionto"
-# git config --global user.email estavrionto@gmail.com
+git config --global user.name "estavrionto"
+git config --global user.email estavrionto@gmail.com
 # git config pull.rebase false
 
 
+steam
+    https://wiki.archlinux.org/title/Steam
+    https://youtu.be/DA5rx7Dw1UI
+        sudo mousepad /etc/pacman.conf
+            uncomment multilib for 32 bit support
+
+        sudo mousepad /etc/sysctl.d/80-gamecompatibility.conf
+            vm.max_map_count = 2147483642
 
 
+check https://www.reddit.com/r/linux_gaming/comments/18l5itz/mesa_vs_amdvlk_vs_vulkanamdgpupro_drivers/
+    suod mousepad /etc/environment
+        VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/radeon_icd.i686.json:/usr/share/vulkan/icd.d/radeon_icd.x86_64.json
+        AMD_VULKAN_ICD=RADV
+        DISABLE_LAYER_AMD_SWITCHABLE_GRAPHICS_1=1
 
 
+mamba:
+    wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+    bash Miniforge3-$(uname)-$(uname -m).sh
 
+    mamba create -n env_jupyter_sep24
+    mamba activate env_jupyter_sep24
+    mamba install jupyterlab nb_conda_kernels ipywidgets
+    # mamba install -c plotly plotly=5.23.0
+
+    mamba create -n env_py_sep24
+    mamba activate env_py_sep24
+    mamba install ipykernel pandas numpy scipy matplotlib
+    mamba install -c plotly plotly=5.23.0
+    mamba install ipykernel
 
 
 

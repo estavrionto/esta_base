@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
-source /home/esta/Software/miniforge3/bin/activate env_jupyter_aug24
+
+if [ -d "/home/esta/Software/miniforge3/bin/" ]; then
+    source /home/esta/Software/miniforge3/bin/activate env_jupyter_aug24
+fi
+
+if [ -d "/home/ab/Software/miniforge3/bin/" ]; then
+    source /home/ab/Software/miniforge3/bin/activate env_jupyter_sep24
+fi
+
 jupyter -h
 jupyter lab

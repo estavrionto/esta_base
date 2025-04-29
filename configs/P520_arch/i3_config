@@ -40,7 +40,7 @@ bar {
         tray_output primary
         # position top
         # status_command i3status
-        status_command "i3blocks -c ~/Software/esta_base/configs/Inspiron_16_5625/i3blocks.conf"
+        status_command "i3blocks -c ~/Software/esta_base/configs/P520_arch/i3blocks.conf"
         colors {
 		background $bg-color
 	    	separator #757575
@@ -72,17 +72,15 @@ exec --no-startup-id nm-applet
 
 set $Locker i3lock --nofork -c 000000 && sleep 1
 
-set $mode_system System (l)ock, (e)xit , (s)uspend, (h)ibernate, (r)eboot, (p)oweroff, (d)ormant
+# set $mode_system System (l)ock, (e)xit , (s)uspend, (h)ibernate, (r)eboot, (p)oweroff, (d)ormant
+set $mode_system System (l)ock, (e)xit , (r)eboot, (p)oweroff
 
 mode "$mode_system" {
     #exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
     bindsym l exec --no-startup-id $Locker, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym p exec --no-startup-id systemctl poweroff -i, mode "default"
-    bindsym d exec --no-startup-id systemctl suspend , mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -195,8 +193,8 @@ set $terminator_app "terminator"
 set $Terminator_app_class "Terminator"
 exec $terminator_app
 for_window [class=$Terminator_app_class] move scratchpad
-bindsym $mod+Return [class=$Terminator_app_class] scratchpad show, resize set 1880px 1100px, move position center
-bindsym $mod+x [class=$Terminator_app_class] scratchpad show, resize set 1880px 1100px, move position center
+bindsym $mod+Return [class=$Terminator_app_class] scratchpad show, resize set 1800px 1000px, move position center
+bindsym $mod+x [class=$Terminator_app_class] scratchpad show, resize set 1800px 1000px, move position center
 
 
 # set $social_app "chromium --force-device-scale-factor=1.2"
@@ -204,8 +202,8 @@ set $social_app "chromium"
 set $social_app_class "Chromium"
 exec $social_app
 for_window [class=$social_app_class] move scratchpad
-bindsym $alt+Return [class=$social_app_class] scratchpad show, resize set 1880px 1100px, move position center
-bindsym $alt+x [class=$social_app_class] scratchpad show, resize set 1880px 1100px, move position center
+bindsym $alt+Return [class=$social_app_class] scratchpad show, resize set 1800px 1000px, move position center
+bindsym $alt+x [class=$social_app_class] scratchpad show, resize set 1800px 1000px, move position center
 for_window [class=$social_app_class] border pixel 3
 
 set $pavucontrol_app "pavucontrol"
@@ -231,6 +229,12 @@ exec discord
 
 
 assign [class="Thunar"] $workspace1
+assign [class="dota2"] $workspace0
+for_window [class="dota2"] floating disable
+assign [class="steam_app_1422450"] $workspace0
+for_window [class="steam_app_1422450"] floating disable
+
+
 assign [class="Code"] $workspace2
 assign [class="Google-chrome"] $workspace3
 assign [class="Lxtask"] $workspace4
