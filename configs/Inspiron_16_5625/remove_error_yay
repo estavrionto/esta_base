@@ -1,0 +1,45 @@
+sudo rm -rf /opt/discord
+sudo rm -rf /usr/bin/discord
+sudo rm -rf /usr/share/applications/discord.desktop
+sudo rm -rf /usr/share/icons/hicolor/*/apps/discord.png
+sudo rm -rf /usr/share/licenses/discord/LICENSE.html
+sudo rm -rf /usr/share/licenses/discord/OSS-LICENSES.html
+
+
+sudo rm -rf /usr/bin/firefox
+sudo rm -rf /usr/lib/firefox
+sudo rm -rf /usr/share/applications/firefox.desktop
+sudo rm -rf /usr/share/gnome-shell/search-providers/firefox.search-provider.ini
+sudo rm -rf /usr/share/icons/hicolor/*/apps/firefox.png
+sudo rm -rf /usr/share/icons/hicolor/scalable/apps/firefox.svg
+sudo rm -rf /usr/share/icons/hicolor/symbolic/apps/firefox-symbolic.svg
+sudo rm -rf /usr/share/metainfo/org.mozilla.firefox.metainfo.xml
+
+
+sudo rm -rf /opt/onlyoffice
+sudo rm -rf /usr/bin/desktopeditors
+sudo rm -rf /usr/bin/onlyoffice-desktopeditors
+sudo rm -rf /usr/share/applications/onlyoffice-desktopeditors.desktop
+sudo rm -rf /usr/share/doc/onlyoffice-desktopeditors/changelog.Debian.gz
+sudo rm -rf /usr/share/icons/hicolor/*/apps/onlyoffice-desktopeditors.png
+sudo rm -rf /usr/share/licenses/onlyoffice-bin/3DPARTYLICENSE
+
+
+sudo rm -rf /usr/bin/electron32
+sudo rm -rf /usr/lib/electron32
+sudo rm -rf /usr/share/applications/electron32.desktop
+sudo rm -rf /usr/share/licenses/electron32
+sudo rm -rf /usr/share/pixmaps/electron32.png
+
+
+sudo rm -rf /etc/xdg/autostart/picom.desktop
+sudo rm -rf /usr/bin/compto*
+sudo rm -rf /usr/bin/pico*
+sudo rm -rf /usr/lib/pkgconfig/picom-api.pc
+sudo rm -rf /usr/share/applications/compton.desktop
+sudo rm -rf /usr/share/applications/picom.desktop
+sudo rm -rf /usr/share/doc/picom
+sudo rm -rf /usr/share/icons/hicolor/48x48/apps/compton.png
+sudo rm -rf /usr/share/icons/hicolor/scalable/apps/compton.svg
+sudo rm -rf /usr/share/licenses/picom
+sudo rm -rf /usr/share/man/man1/picom*

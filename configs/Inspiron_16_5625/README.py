@@ -153,6 +153,8 @@ mamba:
     mamba install -c plotly plotly=5.23.0
     mamba install ipykernel
 
+    
+
 
     ln -s ~/BackUp/education/GaTech/Research/fanLab ~/Research/fanLab
 
@@ -213,12 +215,63 @@ pavucontrol dark mode:
     https://youtu.be/mOXd_SOrDbA
 
 
-yay ventoy
+yay ventoy (-bin is already compiled binaries)
     ran for long time, interrupted
     added 2GB to /root
 yay ventoy-bin:
     worked
     made 4GB kingston pendrive ventoy
+
+yay globalprotect
+    globalprotect-openconnect-git
+        sudo -E gpclient connect --browser chrome vpn.gatech.edu
+        sudo gpclient connect vpn.gatech.edu
+        gpauth vpn.gatech.edu --browser chrome
+
+    https://live.paloaltonetworks.com/t5/globalprotect-discussions/globalprotect-for-arch-linux/td-p/573976
+    cd /home/esta/Software/VPN/GlobalProtect_tar-6.2.0.1-265
+    sudo ./install.sh
+    globalprotect connect -p vpn.gatech.edu
+
+yay ferdium
+
+fsck:
+    from live ventoy arch usb
+    https://www.reddit.com/r/linuxquestions/comments/ry2mdp/ext4_optimisation/
+    fsck -CMf /dev/nvme0n1p3
+
+
+got the error:
+    https://wiki.archlinux.org/title/Pacman#%22Failed_to_commit_transaction_(conflicting_files)%22_error
+    error: could not prepare transaction
+    error: failed to commit transaction (conflicting files)
+    package: /path/to/file exists in filesystem
+    Errors occurred, no packages were upgraded.
+
+    did:
+        # sudo pacman -R ferdium-bin
+        # sudo pacman -R picom
+        # sudo pacman -R firefox
+        # sudo pacman -R electron32
+        # sudo pacman -R discord
+        # sudo pacman -R onlyoffice-bin
+
+        then worked:
+            yay 
+
+yay pacman-contrib
+paccache -u -r -k0
+yay discord
+yay firefox
+yay onlyoffice-bin
+yay ferdium-bin
+yay picom
+
+
+# steam
+yay -S mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon libva-mesa-driver libva-utils
+yay -S vulkan-radeon lib32-vulkan-radeon libva-mesa-driver libva-utils
+
 
 
 
