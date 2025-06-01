@@ -37,10 +37,28 @@ bindsym $mod+d exec dmenu_run -sf grey99 -sb grey1 -nf grey60 -nb grey4 -fn 'Sou
 # bindsym $alt+c exec scrcpy
 
 bar {
-        tray_output primary
+        tray_output DisplayPort-2
         # position top
         # status_command i3status
+        output DisplayPort-2
+
         status_command "i3blocks -c ~/Software/esta_base/configs/P520_arch/i3blocks.conf"
+        colors {
+		background $bg-color
+	    	separator #757575
+		#                  border             background         text
+		focused_workspace  $bg-color          $bg-color          $text-color
+		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+	}
+}
+bar {
+        # tray_output primary
+        # position top
+        # status_command i3status
+        output HDMI-A-0
+        status_command "i3blocks -c ~/Software/esta_base/configs/P520_arch/i3blocks2.conf"
+        # status_command "i3status"
         colors {
 		background $bg-color
 	    	separator #757575
@@ -66,8 +84,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-
-
+exec --no-startup-id  xrandr --output DisplayPort-0 --off --output DisplayPort-1 --off --output DisplayPort-2 --mode 1920x1080 --rate 143.61 --pos 0x0 --rotate normal --output HDMI-A-0 --mode 1920x1080 --pos 1920x0 --rotate left --primary
+exec --no-startup-id dunst
 ############################ power off ####################################
 
 set $Locker i3lock --nofork -c 000000 && sleep 1
@@ -144,10 +162,10 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
  set $workspace1  "1: Thunar"
  set $workspace2  "2: code"
  set $workspace3  "3: chrome"
- set $workspace4  "4: misc"
+ set $workspace4  "4: chrome"
  set $workspace5  "5: steam"
  set $workspace6  "6: discord"
- set $workspace7  "7: main4"
+ set $workspace7  "7: tools"
  set $workspace8  "8: main3"
  set $workspace9  "9: main2"
  set $workspace0  "10: main1"
@@ -176,7 +194,19 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
  bindsym $alt+$shift+9 move container to workspace $workspace9
  bindsym $alt+$shift+0 move container to workspace $workspace0
 ###########################################################################################################################
+set $monitor1 "DisplayPort-2"
+set $monitor2 "HDMI-A-0" 
+workspace $workspace1 output $monitor1
+workspace $workspace2 output $monitor2
+workspace $workspace3 output $monitor1
+workspace $workspace4 output $monitor2
+workspace $workspace5 output $monitor1
 
+workspace $workspace6 output $monitor2
+workspace $workspace7 output $monitor1
+workspace $workspace8 output $monitor2
+workspace $workspace9 output $monitor1
+workspace $workspace0 output $monitor1
 
 ######################################## ScratchPad commands ##################################
 bindsym $alt+space scratchpad show
@@ -212,13 +242,14 @@ exec $pavucontrol_app
 for_window [class=$Pavucontrol_app_class] move scratchpad
 bindsym $alt+s [class=$Pavucontrol_app_class] scratchpad show, resize set 1000px 700px, move position center
 
-exec thunar --daemon
+exec thunar
 exec code
 exec google-chrome-stable
 exec lxtask
 # exec slimbookbattery  
 exec steam
 exec discord
+exec --no-startup-id "xinput --set-prop 14 'libinput Accel Profile Enabled' 0, 0, 1"
 
 
 # exec compton -f
@@ -233,12 +264,14 @@ assign [class="dota2"] $workspace0
 for_window [class="dota2"] floating disable
 assign [class="steam_app_1422450"] $workspace0
 for_window [class="steam_app_1422450"] floating disable
+assign [class="steam_app_526870"] $workspace0
+for_window [class="steam_app_526870"] floating disable
 
 
 assign [class="Code"] $workspace2
 assign [class="Google-chrome"] $workspace3
-assign [class="Lxtask"] $workspace4
-# assign [class="slimbookbatterypreferences.py"] $workspace4
+assign [class="Lxtask"] $workspace7
+# assign [class="slimbookbatterypreferences.py"] $workspace7
 assign [class="steam"] $workspace5
 assign [class="discord"] $workspace6
 
