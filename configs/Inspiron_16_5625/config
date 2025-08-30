@@ -124,6 +124,8 @@ bindsym $mod+Shift+space floating toggle
 # bindsym $alt+Tab workspace prev
 # work on
 # bindsym $alt+Tab exec "rofi -show combi run,window"
+
+bindsym $mod+b exec --no-startup-id ~/Software/esta_base/scripts/toggle-bose.sh
 ##############################################################################
 
 
@@ -221,6 +223,7 @@ exec lxtask
 # exec slimbookbattery  
 exec steam
 exec discord
+exec blueman-applet
 
 
 # exec compton -f
