@@ -37,3 +37,4 @@ if [ -f "/home/ab/Software/miniforge3/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
+export EDITOR=nano

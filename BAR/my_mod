@@ -1,0 +1,10 @@
+beyond all reason
+
+
+game launcher
+WM_CLASS(STRING) = "beyond-all-reason", "Beyond-All-Reason"
+in lobby
+WM_CLASS(STRING) = "spring", "spring"
+ingame
+WM_CLASS(STRING) = "spring", "spring"
+

@@ -133,7 +133,7 @@ bindsym $mod+q kill
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 # change layout
-bindsym $mod+w layout toggle tabbed splith stacking
+bindsym $mod+w layout toggle tabbed splith splitv stacking
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -162,13 +162,13 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
  set $workspace1  "1: Thunar"
  set $workspace2  "2: code"
  set $workspace3  "3: chrome"
- set $workspace4  "4: chrome"
+ set $workspace4  "4: brave"
  set $workspace5  "5: steam"
  set $workspace6  "6: discord"
  set $workspace7  "7: tools"
  set $workspace8  "8: main3"
- set $workspace9  "9: main2"
- set $workspace0  "10: main1"
+ set $workspace9  "9: brave"
+ set $workspace0  "10: game"
 
 # switch to workspace
  bindsym $alt+1 workspace $workspace1
@@ -203,7 +203,7 @@ workspace $workspace4 output $monitor2
 workspace $workspace5 output $monitor1
 
 workspace $workspace6 output $monitor2
-workspace $workspace7 output $monitor1
+workspace $workspace7 output $monitor2
 workspace $workspace8 output $monitor2
 workspace $workspace9 output $monitor1
 workspace $workspace0 output $monitor1
@@ -245,11 +245,12 @@ bindsym $alt+s [class=$Pavucontrol_app_class] scratchpad show, resize set 1000px
 exec thunar
 exec code
 exec google-chrome-stable
+exec brave
 exec lxtask
 # exec slimbookbattery  
 exec steam
 exec discord
-exec --no-startup-id "xinput --set-prop 14 'libinput Accel Profile Enabled' 0, 0, 1"
+exec --no-startup-id "xinput --set-prop 14 'libinput Accel Profile Enabled' 1, 0, 0"
 
 
 # exec compton -f
@@ -266,14 +267,32 @@ assign [class="steam_app_1422450"] $workspace0
 for_window [class="steam_app_1422450"] floating disable
 assign [class="steam_app_526870"] $workspace0
 for_window [class="steam_app_526870"] floating disable
+assign [class="factorio"] $workspace0
+for_window [class="factorio"] floating disable
+assign [class="steam_app_242920"] $workspace0
+for_window [class="steam_app_242920"] floating disable
+assign [class="VampireSurvivors.exe"] $workspace0
+for_window [class="VampireSurvivors.exe"] floating disable
+
+assign [class="Beyond-All-Reason"] $workspace0
+assign [class="spring"] $workspace0
+for_window [class="Beyond-All-Reason"] floating disable
+assign [class="Blueman-manager"] $workspace7
+
+
+
 
 
 assign [class="Code"] $workspace2
 assign [class="Google-chrome"] $workspace3
+assign [class="Brave-browser"] $workspace4
 assign [class="Lxtask"] $workspace7
 # assign [class="slimbookbatterypreferences.py"] $workspace7
 assign [class="steam"] $workspace5
 assign [class="discord"] $workspace6
+
+# make feh patches behave like overlays
+for_window [class="feh"] floating enable, sticky enable, border pixel 0, focus disable
 
 ###########################################################################################################################
 
