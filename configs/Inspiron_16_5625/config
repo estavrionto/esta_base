@@ -65,6 +65,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
+exec --no-startup-id dunst
+
 
 
 
@@ -89,7 +91,7 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
-bindsym $alt+q exec --no-startup-id $Locker
+# bindsym $alt+q exec --no-startup-id $Locker
 bindsym $mod+$shift+e mode "$mode_system"
 ##############################################################################
 
@@ -241,6 +243,9 @@ assign [class="Lxtask"] $workspace4
 assign [class="steam"] $workspace5
 assign [class="discord"] $workspace6
 
+for_window [class="feh"] floating enable
+
+
 ###########################################################################################################################
 
 set $mode_screen Screenshot (f)ull, (w)indow, (s)election
@@ -258,3 +263,12 @@ mode "$mode_screen" {
 bindsym $mod+p mode "$mode_screen"
 bindsym $mod+$shift+s exec --no-startup-id maim --format=png --select | xclip -selection clipboard -t image/png
 ###########################################################################################################################
+
+
+bindsym --release $mod+Shift+t exec --no-startup-id /home/esta/Research/fanLab/phd_2025/fall2025/chem_inve_recon/fake_scanner.sh
+# bindsym --release $mod+Shift+t exec --no-startup-id xdotool type --clearmodifiers "HELLO123"
+# bindsym --release $mod+Shift+t exec --no-startup-id notify-send "binding triggered"
+
+
+
+
