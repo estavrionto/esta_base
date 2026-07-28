@@ -68,7 +68,7 @@
 
 # print(f'cpu:{extract_T(str_cpu)}, gpu:{extract_T(str_gpu)}')
 
-
+#!/usr/bin/env python3
 import subprocess
 import re
 

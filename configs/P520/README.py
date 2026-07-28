@@ -203,10 +203,43 @@ xinput set-prop 12 "libinput Accel Profile Enabled" 0, 0, 1
 xinput set-prop 12 "libinput Accel Custom Motion Points" 0.000, 0.525, 1.332, 2.813, 5.568, 10.000, 15.648, 21.437, 26.671, 31.272, 35.424, 39.313, 43.059, 46.731, 50.367, 53.984, 57.592, 61.196, 64.798, 68.399, 72.000
 xinput set-prop 12 "libinput Accel Custom Motion Step" 4.0000000000
 
-sigmoid at 9, 800-4800, 
+# sigmoid at 9, 800-4800, 
 xinput set-prop 12 "libinput Accel Profile Enabled" 0, 0, 1
 xinput set-prop 12 "libinput Accel Custom Motion Points" 0.000, 0.251, 0.506, 0.791, 1.234, 2.376, 5.205, 8.818, 11.411, 13.243, 14.819, 16.327, 17.818, 19.305, 20.790, 22.275, 23.760, 25.245, 26.730, 28.215, 29.700
 xinput set-prop 12 "libinput Accel Custom Motion Step" 1.5000000000
 
 sudo mount /dev/nvme0n1p3 /mnt/temp_ssd
 sudo nala install ntfs-3g
+
+
+# # adding proper accel profile
+# Disable Logitech G502 HERO acceleration via Xorg (persistent, git-managed)
+
+# 1. Create config (in repo):
+# /home/ab/Software/esta_base/configs/P520_arch/50-mouse-accel.conf
+
+# Section "InputClass"
+#     Identifier "Logitech G502 accel"
+#     MatchProduct "Logitech G502 HERO Gaming Mouse"
+#     Driver "libinput"
+#     Option "AccelProfile" "flat"
+# EndSection
+
+# 2. Symlink into Xorg:
+# sudo ln -s /home/ab/Software/esta_base/configs/P520_arch/50-mouse-accel.conf \
+# /etc/X11/xorg.conf.d/50-mouse-accel.conf
+
+# Check:
+# ls -l /etc/X11/xorg.conf.d/
+
+# 3. Reboot (or restart X):
+# reboot
+
+# 4. Verify:
+# xinput list-props "Logitech G502 HERO Gaming Mouse" | grep "Accel Profile Enabled"
+
+# Expect:
+# 0, 1, 0
+
+# Optional check:
+# grep -i "Logitech G502 accel" ~/.local/share/xorg/Xorg.0.log
