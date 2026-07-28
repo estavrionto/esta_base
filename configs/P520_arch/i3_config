@@ -36,38 +36,59 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 bindsym $mod+d exec dmenu_run -sf grey99 -sb grey1 -nf grey60 -nb grey4 -fn 'Source Code Pro-13'
 # bindsym $alt+c exec scrcpy
 
-bar {
-        tray_output DisplayPort-2
-        # position top
-        # status_command i3status
-        output DisplayPort-2
+exec_always --no-startup-id ~/Software/esta_base/configs/P520_arch/polybar_launch.sh
 
-        status_command "i3blocks -c ~/Software/esta_base/configs/P520_arch/i3blocks.conf"
-        colors {
-		background $bg-color
-	    	separator #757575
-		#                  border             background         text
-		focused_workspace  $bg-color          $bg-color          $text-color
-		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-	}
-}
-bar {
-        # tray_output primary
-        # position top
-        # status_command i3status
-        output HDMI-A-0
-        status_command "i3blocks -c ~/Software/esta_base/configs/P520_arch/i3blocks2.conf"
-        # status_command "i3status"
-        colors {
-		background $bg-color
-	    	separator #757575
-		#                  border             background         text
-		focused_workspace  $bg-color          $bg-color          $text-color
-		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-	}
-}
+
+# bar {
+#         tray_output none
+#         position bottom
+#         # status_command i3status
+#         output DisplayPort-2
+
+#         status_command "i3blocks -c ~/Software/esta_base/configs/P520_arch/i3blocks1.conf"
+#         colors {
+# 		background $bg-color
+# 	    	separator #757575
+# 		#                  border             background         text
+# 		focused_workspace  $bg-color          $bg-color          $text-color
+# 		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+# 		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+# 	}
+# }
+# bar {
+#         tray_output HDMI-A-0
+#         position bottom
+#         # status_command i3status
+#         output HDMI-A-0
+#         status_command "i3blocks -c ~/Software/esta_base/configs/P520_arch/i3blocks2.conf"
+#         # status_command "i3status"
+#         colors {
+# 		background $bg-color
+# 	    	separator #757575
+# 		#                  border             background         text
+# 		focused_workspace  $bg-color          $bg-color          $text-color
+# 		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+# 		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+# 	}
+# }
+
+# bar {
+#         tray_output none
+#         position top
+#         workspace_buttons no
+#         # status_command i3status
+#         output HDMI-A-0
+#         status_command "i3blocks -c ~/Software/esta_base/configs/P520_arch/i3blocks3.conf"
+#         # status_command "i3status"
+#         colors {
+# 		background $bg-color
+# 	    	separator #757575
+# 		#                  border             background         text
+# 		focused_workspace  $bg-color          $bg-color          $text-color
+# 		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+# 		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+# 	}
+# }
 ############################ exec ####################################
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -91,13 +112,14 @@ exec --no-startup-id dunst
 set $Locker i3lock --nofork -c 000000 && sleep 1
 
 # set $mode_system System (l)ock, (e)xit , (s)uspend, (h)ibernate, (r)eboot, (p)oweroff, (d)ormant
-set $mode_system System (l)ock, (e)xit , (r)eboot, (p)oweroff
+set $mode_system [System (l)ock, (e)xit , (r)eboot, (b)ios, (p)oweroff]
 
 mode "$mode_system" {
     #exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
     bindsym l exec --no-startup-id $Locker, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym b exec --no-startup-id systemctl reboot --firmware-setup, mode "default"
     bindsym p exec --no-startup-id systemctl poweroff -i, mode "default"
 
     # back to normal: Enter or Escape
@@ -133,11 +155,15 @@ bindsym $mod+q kill
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 # change layout
-bindsym $mod+w layout toggle tabbed splith splitv stacking
+bindsym $mod+w layout toggle tabbed splitv splith  stacking
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 # bindsym $alt+Tab workspace prev
+# bindsym $alt+Tab workspace back_and_forth
+# bindsym $alt+Tab focus output current; workspace back_and_forth
+bindsym $alt+Tab exec --no-startup-id /home/ab/Software/esta_base/scripts/i3_per_output_alt_tab.py alt-tab
+
 # work on
 # bindsym $alt+Tab exec "rofi -show combi run,window"
 ##############################################################################
@@ -172,7 +198,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
 # switch to workspace
  bindsym $alt+1 workspace $workspace1
- bindsym $alt+2 workspace $workspace2
+ bindsym $alt+2 workspace $workspace2 
  bindsym $alt+3 workspace $workspace3
  bindsym $alt+4 workspace $workspace4
  bindsym $alt+5 workspace $workspace5
@@ -196,10 +222,10 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 ###########################################################################################################################
 set $monitor1 "DisplayPort-2"
 set $monitor2 "HDMI-A-0" 
-workspace $workspace1 output $monitor1
+workspace $workspace1 output $monitor1 
 workspace $workspace2 output $monitor2
 workspace $workspace3 output $monitor1
-workspace $workspace4 output $monitor2
+workspace $workspace4 output $monitor1
 workspace $workspace5 output $monitor1
 
 workspace $workspace6 output $monitor2
@@ -210,6 +236,7 @@ workspace $workspace0 output $monitor1
 
 ######################################## ScratchPad commands ##################################
 bindsym $alt+space scratchpad show
+# bindsym $mod+b bar mode toggle
 
 
 # set $tilix_app "tilix"
@@ -247,12 +274,15 @@ exec code
 exec google-chrome-stable
 exec brave
 exec lxtask
+exec corectrl
+exec gnome-system-monitor
 # exec slimbookbattery  
 exec steam
 exec discord
-exec --no-startup-id "xinput --set-prop 14 'libinput Accel Profile Enabled' 1, 0, 0"
+# exec --no-startup-id "xinput --set-prop 14 'libinput Accel Profile Enabled' 1, 0, 0"
+# exec --no-startup-id sh -c 'xinput set-prop "Logitech G502 HERO Gaming Mouse" "libinput Accel Profile Enabled" 0 1 0'
 
-
+# xinput set-prop "Logitech G502 HERO Gaming Mouse" "libinput Accel Profile Enabled" 1 0 0
 # exec compton -f
 # exec nitrogen --restore
 # exec i3-msg workspace $workspace3e
@@ -261,8 +291,13 @@ exec --no-startup-id "xinput --set-prop 14 'libinput Accel Profile Enabled' 1, 0
 
 
 assign [class="Thunar"] $workspace1
+
 assign [class="dota2"] $workspace0
 for_window [class="dota2"] floating disable
+assign [class="steam_app_3240220"] $workspace0
+# for_window [class="steam_app_3240220"] floating disable
+# for_window [class="steam_app_3240220"] fullscreen enable
+
 assign [class="steam_app_1422450"] $workspace0
 for_window [class="steam_app_1422450"] floating disable
 assign [class="steam_app_526870"] $workspace0
@@ -280,19 +315,29 @@ for_window [class="Beyond-All-Reason"] floating disable
 assign [class="Blueman-manager"] $workspace7
 
 
+assign [class="com-atlauncher-App"] $workspace5
 
+assign [class="^Minecraft.*$"]  $workspace0
 
 
 assign [class="Code"] $workspace2
 assign [class="Google-chrome"] $workspace3
 assign [class="Brave-browser"] $workspace4
 assign [class="Lxtask"] $workspace7
+assign [class="corectrl"] $workspace7
+assign [class="gnome-system-monitor"] $workspace7
+
+
 # assign [class="slimbookbatterypreferences.py"] $workspace7
 assign [class="steam"] $workspace5
 assign [class="discord"] $workspace6
 
 # make feh patches behave like overlays
 for_window [class="feh"] floating enable, sticky enable, border pixel 0, focus disable
+
+# for_window [title="Picture in picture"] floating enable, sticky enable, border pixel 0, focus disable
+for_window [title="Picture in picture"] floating enable
+for_window [title="Picture in picture"] sticky enable
 
 ###########################################################################################################################
 

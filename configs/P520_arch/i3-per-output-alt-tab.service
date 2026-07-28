@@ -1,0 +1,15 @@
+[Unit]
+Description=i3 per-output Alt-Tab workspace helper
+After=graphical-session.target
+PartOf=graphical-session.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStart=/home/ab/Software/esta_base/scripts/i3_per_output_alt_tab.py
+Restart=always
+RestartSec=2
+KillMode=process
+
+[Install]
+WantedBy=default.target
