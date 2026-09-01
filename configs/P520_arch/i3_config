@@ -356,3 +356,8 @@ mode "$mode_screen" {
 bindsym $mod+p mode "$mode_screen"
 bindsym $mod+$shift+s exec --no-startup-id maim --format=png --select | xclip -selection clipboard -t image/png
 ###########################################################################################################################
+
+
+exec --no-startup-id xset s off
+exec --no-startup-id xset -dpms
+exec --no-startup-id xset s noblank

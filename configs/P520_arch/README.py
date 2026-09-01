@@ -395,3 +395,8 @@ radeon_icd.json
 Because of the override, Vulkan could not find a driver, so Dota started but never created a window.
 
 Removing those environment variables fixed Vulkan and restored normal game launching.
+
+
+gamemoderun mangohud  %command% -novid -nojoy -sdl_displayindex 1 +fps_max 140 -console -sdlaudiodriver pulse
+
+-novid -nojoy -sdl_displayindex 1 
