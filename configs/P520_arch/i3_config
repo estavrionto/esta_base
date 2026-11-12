@@ -6,6 +6,15 @@ set $alt mod1
 set $ctrl control
 set $shift Shift
 
+#############################################################
+# Monitor configuration
+set $monitor1 DP-3
+set $monitor2 HDMI-1
+
+# Monitor resolutions and refresh rates
+set $monitor1_resolution 1920x1080
+set $monitor1_refresh 143.61
+set $monitor2_resolution 1920x1080
 ###########################################################################################################################
 #colors
 set $bg-color 	         #000000
@@ -104,8 +113,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
-
-exec --no-startup-id  xrandr --output DisplayPort-0 --off --output DisplayPort-1 --off --output DisplayPort-2 --mode 1920x1080 --rate 143.61 --pos 0x0 --rotate normal --output HDMI-A-0 --mode 1920x1080 --pos 1920x0 --rotate left --primary
+exec --no-startup-id xrandr --output $monitor1 --mode $monitor1_resolution --rate $monitor1_refresh --pos 0x0 --rotate normal --output $monitor2 --mode $monitor2_resolution --right-of $monitor1 --rotate left --primary
+# exec --no-startup-id  xrandr --output DisplayPort-0 --off --output DisplayPort-1 --off --output DisplayPort-2 --mode 1920x1080 --rate 143.61 --pos 0x0 --rotate normal --output HDMI-A-0 --mode 1920x1080 --pos 1920x0 --rotate left --primary
 exec --no-startup-id dunst
 ############################ power off ####################################
 
@@ -220,8 +229,8 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
  bindsym $alt+$shift+9 move container to workspace $workspace9
  bindsym $alt+$shift+0 move container to workspace $workspace0
 ###########################################################################################################################
-set $monitor1 "DisplayPort-2"
-set $monitor2 "HDMI-A-0" 
+# set $monitor1 "DisplayPort-2"
+# set $monitor2 "HDMI-A-0" 
 workspace $workspace1 output $monitor1 
 workspace $workspace2 output $monitor2
 workspace $workspace3 output $monitor1

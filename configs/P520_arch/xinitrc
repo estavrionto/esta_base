@@ -43,14 +43,18 @@ fi
 #   thunar --daemon
 #fi
 
+# Export X11 environment variables to systemd and D-Bus for portals, PipeWire, and screen sharing
+dbus-update-activation-environment --systemd DISPLAY XAUTHORITY
+systemctl --user import-environment DISPLAY XAUTHORITY
+
 # start Gnome keyring
 if [ -f /usr/bin/gnome-keyring-daemon ]; then
-  dbus-update-activation-environment --systemd DISPLAY
   eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
   export SSH_AUTH_SOCK
 fi
 
 # start i3
 if [ -f /usr/bin/i3 ]; then
- exec i3
+  exec i3
 fi
+
